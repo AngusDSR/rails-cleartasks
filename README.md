@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+This note taking, task logging planner Rails app was designed to help me turn tough notes into clear actionable tasks. Users can enter notes and save them but they must then be properly structured before they can be included as tasks.
