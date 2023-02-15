@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_171110) do
   enable_extension "plpgsql"
 
   create_table "subtasks", force: :cascade do |t|
-    t.string "subtask_content"
-    t.boolean "subtask_completion", default: false
+    t.string "content"
+    t.boolean "completion", default: false
     t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,14 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_171110) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.text "task_content"
-    t.string "task_name"
-    t.date "task_due_date"
-    t.integer "task_importance", default: 0
-    t.string "task_reason"
-    t.string "task_contact"
-    t.boolean "task_completion", default: false
-    t.text "task_content_original"
+    t.text "content"
+    t.string "name"
+    t.date "due_date"
+    t.integer "importance", default: 0
+    t.integer "difficulty", default: 0
+    t.string "reason"
+    t.string "contact"
+    t.boolean "completion", default: false
+    t.text "content_original"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

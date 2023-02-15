@@ -1,4 +1,4 @@
 class Subtask < ApplicationRecord
   belongs_to :task
-  validates :subtask_content, presence: true, uniqueness: true, length: { in: 15..150 }
+  validates :content, presence: true, uniqueness: true, length: { in: 10..150 }
 end
