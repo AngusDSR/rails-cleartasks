@@ -1,0 +1,9 @@
+Add a new note
+  <%= simple_form_for(@task) do |form| %>
+    <div>
+      <%= form.label :content %>
+      <%= form.text_field :content, required: true %>
+    </div>
+    <%= form.submit "Create Task" %>
+  <% end %>
+<hr>
