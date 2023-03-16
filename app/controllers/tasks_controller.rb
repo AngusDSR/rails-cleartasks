@@ -9,14 +9,12 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.save!
-    # if @task.save
-    #   # tbc
-    #   # redirect_to tasks_new_path,
-    #   notice: "Task submitted successfully."
-    # else
-    #   render :nee
-    # end
+
+    if @task.save
+      redirect_to @task, notice: "Task submitted successfully."
+    else
+      render :new
+    end
   end
 
   private
