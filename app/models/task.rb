@@ -5,11 +5,13 @@ class Task < ApplicationRecord
   after_initialize :set_task_content_original
   after_commit :update_task_log
 
-  # validation
-  validates :name, presence: true, uniqueness: true, length: { in: 10..150 }
-  validates :importance, numericality: { less_than: 4 }
-  validates :difficulty, numericality: { less_than: 4 }
-  validate :due_date_must_be_in_future
+  # validates :content, presence: true, length: { in: 10..150 }
+  validates :content, presence: true, length: { in: 1..150 }
+  # rest of validation should not happen on task 'fine-tuning'
+  # validates :name, presence: true, uniqueness: true, length: { in: 10..150 }
+  # validates :importance, numericality: { less_than: 4 }
+  # validates :difficulty, numericality: { less_than: 4 }
+  # validate :due_date_must_be_in_future
 
   private
 

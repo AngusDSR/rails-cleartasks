@@ -1,0 +1,18 @@
+<h1>Tasks: Home</h1>
+Add a new note
+  <%= form_with model: @task, url: tasks_path do |form| %>
+    <div>
+      <%= form.label :content %>
+      <%= form.text_field :content, required: true %>
+    </div>
+    <%= form.submit "Create Task" %>
+  <% end %>
+<hr>
+
+<h2>Notes</h2>
+<% @tasks.each do |task| %>
+  <div>
+    <%= task.content %>
+    <hr>
+  </div>
+<% end %>

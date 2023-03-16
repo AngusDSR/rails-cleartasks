@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  def home
-    @tasks = Task.all.order('due_date DESC, importance')
+  def index
+    @tasks = Task.all
   end
 
   def new
@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to @task, notice: "Task submitted successfully."
+      redirect_to root_path, notice: "Task submitted successfully."
     else
       render :new
     end
