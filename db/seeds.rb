@@ -6,7 +6,7 @@ Task.destroy_all
   Task.create!(
     content: "test content ##{num}",
     name: "test name ##{num}",
-    due_date: "2023-03-#{rand(31)}",
+    due_date: "2023-04-#{rand(31)}",
     importance: rand(3),
     difficulty: rand(3),
     reason: "test reason ##{num}",
