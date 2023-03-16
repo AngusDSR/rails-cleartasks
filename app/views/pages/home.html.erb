@@ -1,10 +1,32 @@
 <h1>Tasks: Home</h1>
+Add a new note
+<input type="text">
+<%= simple_form_for(@tasks) do |f| %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
+<%#
+
+    t.text "content"
+    t.string "name"
+    t.date "due_date"
+    t.integer "importance", default: 0
+    t.integer "difficulty", default: 0
+    t.string "reason"
+    t.string "contact"
+    t.boolean "completion", default: false
+    t.text "content_original"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false %>
+
+
 <hr>
 <% @tasks.each do |task| %>
   <div class="border border-rounded w-80">
     <h3><%= task.name %> (<%= task.importance %>)</h3>
     <p><%= task.content %></p>
     <p>Due in <%= (task.due_date - Date.today).to_i %> days</p>
+
     <hr>
   </div>
 <% end %>
