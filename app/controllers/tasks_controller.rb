@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def home
+
     @tasks = Task.all.order('due_date DESC, importance')
   end
 
@@ -8,6 +9,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    # raise
     @task = Task.new(task_params)
 
     if @task.save
