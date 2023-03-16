@@ -1,10 +1,12 @@
 <h1>Tasks: Home</h1>
 Add a new note
-<input type="text">
-<%= simple_form_for(@tasks) do |f| %>
-  <%= f.input :content %>
-  <%= f.submit %>
-<% end %>
+  <%= form_with model: @task, url: tasks_path do |form| %>
+    <div>
+      <%= form.label :content %>
+      <%= form.text_field :content, required: true %>
+    </div>
+    <%= form.submit "Create Task" %>
+  <% end %>
 <%#
 
     t.text "content"
@@ -21,12 +23,3 @@ Add a new note
 
 
 <hr>
-<% @tasks.each do |task| %>
-  <div class="border border-rounded w-80">
-    <h3><%= task.name %> (<%= task.importance %>)</h3>
-    <p><%= task.content %></p>
-    <p>Due in <%= (task.due_date - Date.today).to_i %> days</p>
-
-    <hr>
-  </div>
-<% end %>
