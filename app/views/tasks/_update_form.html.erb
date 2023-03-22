@@ -1,5 +1,13 @@
-<div class="update-form">
+<div class="update-form d-flex">
   <hr>
-  <h4>update form</h4>
-  <hr>
+  <h4>❌</h4>
+    <%= simple_form_for(task) do |f| %>
+      <%= task.content %>
+      <%= f.input :reason %>
+      <%= f.input :contact %>
+      <%= f.input :due_date %>
+      <%= f.input :importance %>
+      <%= f.input :difficulty %>
+      <%= f.submit %>
+    <% end %>
 </div>

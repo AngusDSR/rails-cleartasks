@@ -3,14 +3,16 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 
+
+// move this to separate file and import
 const tasks = document.querySelectorAll('.note-text')
 
-function openTask(e) {
-  console.log(e);
-}
-
 tasks.forEach((task) => {
-  task.addEventListener("click", openTask(e));
+
+  task.addEventListener("click", function(e) {
+    task.nextElementSibling.style.display = "block";
+    task.style.display = "none";
+  });
 });
 
-console.log("hello");
+// separate button to close / cancel
