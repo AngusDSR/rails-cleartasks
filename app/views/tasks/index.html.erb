@@ -18,3 +18,18 @@ Add a new note
     <hr>
   </div>
 <% end %>\
+
+<script>
+const tasks = document.querySelectorAll('.note-text')
+
+// function openTask(e) {
+//   console.log(e);
+// }
+
+tasks.forEach((task) => {
+
+  task.addEventListener("click", function(e) {console.log(task);});
+});
+
+// console.log("hello");
+</script>
