@@ -19,9 +19,18 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to root_path
-    # else
-    #   render :edit
+      # else
+      # ADD ERROR POP-UP HERE
+      #   render :edit
     end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    if @task.destroy
+      redirect_to root_path
+    end
+    # delete subtasks
   end
 
   private

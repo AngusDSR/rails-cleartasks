@@ -1,7 +1,7 @@
 <div class="update-form d-flex">
   <hr>
   <h4>❌</h4>
-       <%= simple_form_for(task) do |f| %>
+    <%= simple_form_for(task) do |f| %>
       <%= task.content %>
       <%= f.input :reason %>
       <%= f.input :contact %>
@@ -10,4 +10,7 @@
       <%= f.input :difficulty %>
       <%= f.submit %>
     <% end %>
+    <%# why is it not confirming? %>
+    <%= button_to "Destroy! 💣", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class:"btn btn-danger" %>
+
 </div>
