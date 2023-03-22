@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
     @new_task = Task.new
   end
 
@@ -17,12 +17,16 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
+    if @task.update(task_params)
+      redirect_to root_path
+    # else
+    #   render :edit
+    end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :reason, :due_date, :importance, :difficulty, :contact )
   end
 end
