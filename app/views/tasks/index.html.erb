@@ -12,7 +12,9 @@ Add a new note
 <h2>Notes</h2>
 <% @tasks.each do |task| %>
   <div>
-    <%= task.content %>
+    <input type="checkbox">
+    <p class="note-text"><%= task.content %></p>
+    <%= render "tasks/update_form" %>
     <hr>
   </div>
 <% end %>\
