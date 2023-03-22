@@ -14,22 +14,21 @@ Add a new note
   <div>
     <input type="checkbox">
     <p class="note-text"><%= task.content %></p>
+     <%= simple_form_for(task) do |f| %>
+      <%= task.content %>
+      <%= f.input :reason %>
+      <%= f.input :contact %>
+      <%= f.input :due_date %>
+      <%= f.input :importance %>
+      <%= f.input :difficulty %>
+      <%= f.submit %>
+    <% end %>
+
     <%= render "tasks/update_form" %>
     <hr>
   </div>
 <% end %>\
 
 <script>
-const tasks = document.querySelectorAll('.note-text')
 
-// function openTask(e) {
-//   console.log(e);
-// }
-
-tasks.forEach((task) => {
-
-  task.addEventListener("click", function(e) {console.log(task);});
-});
-
-// console.log("hello");
 </script>
