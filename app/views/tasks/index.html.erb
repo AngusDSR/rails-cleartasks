@@ -23,9 +23,17 @@ Add a new note
 
 <h2>Tasks:</h2>
 <% @tasks.each do |task| %>
- <p> <%= task.name %> ⭕ </p>
+<button class="view_task">open task</button>
+ <p> <%= task.name %>  </p>
+ <div class="taskview">
  <p> * <%= task.reason %> </p>
+ <p> * <%= task.contact %> </p>
+ <p> * <%= task.due_date %> </p>
+ <p> * <%= task.importance %> </p>
+ <p> * <%= task.difficulty %> </p>
+ </div>
 <% end %>
+
 <script>
 
 </script>
