@@ -10,30 +10,27 @@ Add a new note
 <hr>1
 
 <h2>Notes</h2>
+<%# 'Notes' are new tasks with content but no details %>
 <% @new_tasks.each do |task| %>
   <div>
     <input type="checkbox">
-    <p class="note-text"><%= task.content %></p>
-
-
     <%= render "tasks/update_form", task:task %>
     <hr>
   </div>
 <% end %>
 
 <h2>Tasks:</h2>
+<%# 'Tasks' have details %>
 <% @tasks.each do |task| %>
-<button class="view_task">open task</button>
- <p> <%= task.name %>  </p>
- <div class="taskview">
- <p> * <%= task.reason %> </p>
- <p> * <%= task.contact %> </p>
- <p> * <%= task.due_date %> </p>
- <p> * <%= task.importance %> </p>
- <p> * <%= task.difficulty %> </p>
- </div>
+  <button class="btn-view-task-details">open task</button>
+  <p> <%= task.name %>  </p>
+  <div class="view-task">
+    <p>You have to: <%= task.name %></p>
+    <p> By: <%= task.due_date %></p>
+    <p> Because: <%= task.reason %></p>
+    <p> For: <%= task.contact %> </p>
+    <p> * <%= task.importance %> </p>
+    <p> * <%= task.difficulty %> </p>
+    <p>[Sub tasks here]</p>
+  </div>
 <% end %>
-
-<script>
-
-</script>
