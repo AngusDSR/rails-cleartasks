@@ -15,8 +15,18 @@ tasks.forEach((task) => {
   });
 });
 
-closeTaskBtn.forEach((task) => {
+// closeTaskBtn.forEach((task) => {
+//   task.addEventListener("click", function(e) {
+//     // HIDE TASKS
+//   });
+// });
+
+const detailTask = document.querySelectorAll('.view_task')
+
+detailTask.forEach((task) => {
   task.addEventListener("click", function(e) {
-    // HIDE TASKS
+    console.log(e);
+    task.nextElementSibling.nextElementSibling.style.display = "block";
+    task.style.display = "none";
   });
 });
