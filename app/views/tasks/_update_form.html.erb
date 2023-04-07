@@ -3,11 +3,12 @@
   <h4>❌</h4>
     <%= simple_form_for(task) do |f| %>
       <%= task.content %>
+      <%= f.input :name %>
       <%= f.input :reason %>
       <%= f.input :contact %>
-      <%= f.input :due_date %>
-      <%= f.input :importance %>
-      <%= f.input :difficulty %>
+      <%= f.input :due_date, include_blank: true %>
+      <%= f.input :importance, default: '' %>
+      <%= f.input :difficulty, default: '' %>
       <%= f.submit %>
     <% end %>
     <%# why is it not confirming? %>
