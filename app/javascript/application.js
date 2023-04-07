@@ -5,8 +5,11 @@ import "bootstrap"
 
 
 // move this to separate file and import
-const tasks = document.querySelectorAll('.note-text')
-const closeTaskBtn = document.querySelectorAll('.btn-close')
+const tasks = document.querySelectorAll('.note-text');
+const closeTaskBtn = document.querySelectorAll('.btn-close');
+const taskViewBtns = document.querySelectorAll('.btn-view-task-details');
+const noteTexts = document.querySelectorAll('.note-text');
+const CloseUpdateTaskBtns = document.querySelectorAll('.btn-close-task-update');
 
 tasks.forEach((task) => {
   task.addEventListener("click", function(e) {
@@ -21,12 +24,23 @@ tasks.forEach((task) => {
 //   });
 // });
 
-const detailTask = document.querySelectorAll('.view_task')
-
-detailTask.forEach((task) => {
+taskViewBtns.forEach((task) => {
   task.addEventListener("click", function(e) {
-    console.log(e);
     task.nextElementSibling.nextElementSibling.style.display = "block";
     task.style.display = "none";
+  });
+});
+
+noteTexts.forEach((task) => {
+  task.addEventListener("click", function(e) {
+    task.nextElementSibling.style.display = "block";
+    task.style.display = "none";
+  });
+});
+
+CloseUpdateTaskBtns.forEach((btn) => {
+  btn.addEventListener("click", function(e) {
+    btn.parentElement.style.display = "none";
+    btn.parentElement.previousElementSibling.style.display = "block";
   });
 });

@@ -1,17 +1,20 @@
 <div class="update-form d-flex">
-  <hr>
-  <h4>❌</h4>
+
+  <p class="note-text"><%= task.content.slice(0, 15) %></p>
+  <div class="update-task">
     <%= simple_form_for(task) do |f| %>
-      <%= task.content %>
-      <%= f.input :name %>
-      <%= f.input :reason %>
-      <%= f.input :contact %>
-      <%= f.input :due_date, include_blank: true %>
-      <%= f.input :importance, default: '' %>
-      <%= f.input :difficulty, default: '' %>
+      <p><%= task.content %></p>
+      <p><%= f.input :name %></p>
+      <p><%= f.input :reason %></p>
+      <p><%= f.input :contact %></p>
+      <p><%= f.input :due_date, include_blank: true %></p>
+      <p><%= f.input :importance, default: '' %></p>
+      <p><%= f.input :difficulty, default: '' %></p>
       <%= f.submit %>
     <% end %>
     <%# why is it not confirming? %>
     <%= button_to "Destroy! 💣", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class:"btn btn-danger" %>
+    <button class="btn-close-task-update">Close</button>
+  </div>
 
 </div>
