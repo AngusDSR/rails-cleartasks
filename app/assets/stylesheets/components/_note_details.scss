@@ -1,0 +1,44 @@
+
+.container-note-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.note-info {
+  margin: 0.2rem;
+  padding: 0.4rem;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  font-family: roboto;
+  font-weight: 600;
+}
+
+.note-title {
+  width: 90%;
+  background-color: #fff;
+  color: $gray;
+  &:hover {
+    color: #000;
+    scale: 1.01;
+    box-shadow: 3px 3px 1px 0px;
+  }
+}
+
+.note-number {
+  flex-grow: 1;
+  background-color: $gray;
+  text-align: center;
+  color: #fff;
+  box-shadow: 2px 1px 10px 0px $gray;
+}
+
+.update-form {
+  max-width: 78vw;
+  display: none;
+}
+
+.note-details::placeholder {
+  font-weight: 600;
+}

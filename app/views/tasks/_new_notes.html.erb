@@ -1,0 +1,10 @@
+<div class="container-notes-new">
+  <%= simple_form_for new_task, html: { class: "bg-black m-0", autocomplete: "off" } do |form| %>
+    <%= form.input :content,
+      required: true, label: false,
+      input_html: { class: 'input-notes bg-black',
+      placeholder: 'Add your notes here...' }
+    %>
+    <p class="instruction-note">Press [Ctrl + Enter] to save notes</p>
+  <% end %>
+</div>

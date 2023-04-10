@@ -1,0 +1,11 @@
+<% if new_tasks.empty? %>
+  <hr>
+  <p class="no-notes">No notes - you're on top of things 👍</p>
+  <hr>
+<% else %>
+  <ul class="list-notes">
+    <% new_tasks.each do |task| %>
+      <%= render "tasks/add_task_details", task:task %>
+    <% end %>
+  </ul>
+<% end %>

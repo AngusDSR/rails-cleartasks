@@ -9,8 +9,7 @@ Task.destroy_all
     due_date: "2023-04-#{rand(31)}",
     importance: rand(3),
     difficulty: rand(3),
-    reason: "test reason ##{num}",
-    contact: "test contact ##{num}"
+    reason: "test reason ##{num}"
   )
 end
 

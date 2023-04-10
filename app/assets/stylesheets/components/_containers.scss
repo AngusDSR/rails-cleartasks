@@ -1,0 +1,38 @@
+.container-main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 99vh;
+  margin: 0.2rem;
+  padding: 0;
+  border: solid rgb(14, 13, 22) 1px;
+  border-radius: 10px;
+}
+
+.container-tasks {
+  flex-direction: column;
+  background-color: $blue;
+  color: #fff;
+}
+
+.container-notes-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-notes-new {
+  border-bottom: solid 1px $light-gray;
+// textbox
+}
+
+.container-notes-details {
+  background-color: $light-blue;
+  height: 100%;
+  }
+
+.section-title {
+  padding: 0.5rem 0;
+  background-color: $gray;
+  font-weight: 100;
+  text-align: center;
+  color: $light-gray;
+}

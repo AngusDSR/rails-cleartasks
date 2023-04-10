@@ -1,36 +1,16 @@
-<h1>Tasks: Home</h1>
-Add a new note
-  <%= simple_form_for(@new_task) do |form| %>
-    <div>
-      <%= form.label :content %>
-      <%= form.text_field :content, required: true %>
-    </div>
-    <%= form.submit "Create Task" %>
-  <% end %>
-<hr>1
+<%# 'Tasks' with details %>
+<div class="container-tasks">
+  <h2 class="section-title">Tasks</h2>
+  <%= render "tasks/tasks", tasks: @tasks %>
+</div>
 
-<h2>Notes</h2>
-<%# 'Notes' are new tasks with content but no details %>
-<% @new_tasks.each do |task| %>
-  <div>
-    <input type="checkbox">
-    <%= render "tasks/update_form", task:task %>
-    <hr>
-  </div>
-<% end %>
+<%# New tasks entered as rough notes %>
+<div class="container-notes-col">
+  <%= render "tasks/new_notes", new_task: @new_task %>
 
-<h2>Tasks:</h2>
-<%# 'Tasks' have details %>
-<% @tasks.each do |task| %>
-  <button class="btn-view-task-details">open task</button>
-  <p> <%= task.name %>  </p>
-  <div class="view-task">
-    <p>You have to: <%= task.name %></p>
-    <p> By: <%= task.due_date %></p>
-    <p> Because: <%= task.reason %></p>
-    <p> For: <%= task.contact %> </p>
-    <p> * <%= task.importance %> </p>
-    <p> * <%= task.difficulty %> </p>
-    <p>[Sub tasks here]</p>
+  <%# Notes that need details from user %>
+  <div class="container-notes-details">
+    <h2 class="section-title">Notes</h2>
+    <%= render "tasks/notes", new_tasks: @new_tasks %>
   </div>
-<% end %>
+</div>

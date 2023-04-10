@@ -1,0 +1,29 @@
+<div class="update-form d-flex">
+  <li class="container-note-info">
+    <p class="note-info note-title"><%= task.content.slice(0, 80) %></p>
+
+    <%# DAYS SINCE SAVED %>
+    <p class="note-info note-number"><%= (Date.today - task.created_at.to_date).to_i %> </p>
+
+    <%# # OF LINES %>
+    <p class="note-info note-number"><%= task.content.lines.size %></p>
+  </li>
+  <div class="update-task">
+    <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
+      <div>
+        <p><%= f.input :name, required: true,  placeholder: "Task name: I have to..."  %></p>
+        <p><%= f.input :reason, required: true,  placeholder: 'Because/in time for...' %></p>
+        <p><%= f.input :due_date, include_blank: true %></p>
+      </div>
+      <p><%= f.input :content %></p>
+      <p><%= f.input :importance, default: '' %></p>
+      <p><%= f.input :difficulty, default: '' %></p>
+      <%= f.submit %>
+    <% end %>
+    <%# why is it not confirming? %>
+    <%= button_to "Destroy! 💣", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class:"btn btn-danger" %>
+    <button class="btn-close-task-update">Close</button>
+    <hr>
+  </div>
+
+</div>
