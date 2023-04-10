@@ -1,7 +1,3 @@
-.update-form {
-  max-width: 78vw;
-  display: none;
-}
 
 .container-note-info {
   display: flex;
@@ -36,4 +32,13 @@
   text-align: center;
   color: #fff;
   box-shadow: 2px 1px 10px 0px $gray;
+}
+
+.update-form {
+  max-width: 78vw;
+  display: none;
+}
+
+.note-details::placeholder {
+  font-weight: 600;
 }

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     @new_tasks = Task.where.not(content: nil).where(reason: [nil, '']).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
-    @tasks = Task.where(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+    @tasks = Task.where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
   end
 
   def create
@@ -38,6 +38,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :name, :reason, :due_date, :importance, :difficulty, :contact )
+    params.require(:task).permit(:content, :name, :reason, :due_date, :importance, :difficulty )
   end
 end

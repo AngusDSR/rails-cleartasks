@@ -27,14 +27,11 @@ noteTitles.forEach((title) => {
   });
 });
 
-
 // Show details of saved tasks
 taskNames.forEach((task) => {
   task.addEventListener("click", function(e) {
     task.nextElementSibling.style.display = "block";
     task.style.display = "none";
-    console.log(task)
-    console.log(task.nextElementSibling)
   });
 });
 

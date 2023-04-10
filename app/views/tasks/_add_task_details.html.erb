@@ -9,14 +9,13 @@
     <p class="note-info note-number"><%= task.content.lines.size %></p>
   </li>
   <div class="update-task">
-    <%= simple_form_for task, html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+    <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
       <div>
-        <p><%= f.input :name %></p>
-        <p><%= f.input :reason %></p>
+        <p><%= f.input :name, required: true,  placeholder: "Task name: I have to..."  %></p>
+        <p><%= f.input :reason, required: true,  placeholder: 'Because/in time for...' %></p>
         <p><%= f.input :due_date, include_blank: true %></p>
       </div>
-      <p><%= task.content %></p>
-      <p><%= f.input :contact %></p>
+      <p><%= f.input :content %></p>
       <p><%= f.input :importance, default: '' %></p>
       <p><%= f.input :difficulty, default: '' %></p>
       <%= f.submit %>
