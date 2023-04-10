@@ -11,10 +11,6 @@
   <%# Notes that need details from user %>
   <div class="container-notes-details">
     <h2 class="section-title">Notes</h2>
-    <% @new_tasks.each do |task| %>
-      <div>
-        <%= render "tasks/add_task_details", task:task %>
-      </div>
-    <% end %>
+    <%= render "tasks/notes", new_tasks: @new_tasks %>
   </div>
 </div>

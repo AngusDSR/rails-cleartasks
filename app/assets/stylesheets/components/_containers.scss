@@ -17,7 +17,6 @@
 .container-notes-col {
   display: flex;
   flex-direction: column;
-  // flex-grow: 0.8;
 }
 
 .container-notes-new {
@@ -27,12 +26,11 @@
 
 .container-notes-details {
   background-color: $light-blue;
-  ;
-  // add colours
-  // scrollable list
+  height: 100%;
   }
 
 .section-title {
+  padding: 0.5rem 0;
   background-color: $gray;
   font-weight: 100;
   text-align: center;

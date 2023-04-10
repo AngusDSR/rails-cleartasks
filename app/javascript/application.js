@@ -5,12 +5,13 @@ import "bootstrap"
 
 // move this to separate file and import
 const newNote = document.getElementById('new_task');
-const tasks = document.querySelectorAll('.note-text');
-const closeTaskBtn = document.querySelectorAll('.btn-close');
-const taskNamesText = document.querySelectorAll('.text-task-name');
-const noteTexts = document.querySelectorAll('.note-text');
+const noteTitles = document.querySelectorAll('.note-title');
+// const tasks = document.querySelectorAll('.note-title');
+// const closeTaskBtn = document.querySelectorAll('.btn-close');
+const taskNames = document.querySelectorAll('.task-name');
 const CloseUpdateTaskBtns = document.querySelectorAll('.btn-close-task-update');
 
+// Submit form and save notes
 window.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && e.ctrlKey) {
     e.preventDefault();
@@ -18,34 +19,38 @@ window.addEventListener('keydown', function(e) {
   }
 });
 
-tasks.forEach((task) => {
-  task.addEventListener("click", function(e) {
-    task.nextElementSibling.style.display = "block";
-    task.style.display = "none";
+// Show form to add task details to new notes
+noteTitles.forEach((title) => {
+  title.addEventListener("click", function(e) {
+    title.parentElement.style.display = "none";
+    title.parentElement.nextElementSibling.style.display = "block";
   });
 });
 
+
+// Show details of saved tasks
+taskNames.forEach((task) => {
+  task.addEventListener("click", function(e) {
+    task.nextElementSibling.style.display = "block";
+    task.style.display = "none";
+    console.log(task)
+    console.log(task.nextElementSibling)
+  });
+});
+
+// Hide task details
 // closeTaskBtn.forEach((task) => {
 //   task.addEventListener("click", function(e) {
 //     // HIDE TASKS
 //   });
 // });
 
-taskNamesText.forEach((taskNameText) => {
-  taskNameText.addEventListener("click", function(e) {
-    taskNameText.nextElementSibling.style.display = "block";
-    taskNameText.style.display = "none";
-    console.log(taskNameText)
-    console.log(taskNameText.nextElementSibling)
-  });
-});
-
-noteTexts.forEach((task) => {
-  task.addEventListener("click", function(e) {
-    task.nextElementSibling.style.display = "block";
-    task.style.display = "none";
-  });
-});
+// noteTexts.forEach((task) => {
+//   task.addEventListener("click", function(e) {
+//     task.nextElementSibling.style.display = "block";
+//     task.style.display = "none";
+//   });
+// });
 
 CloseUpdateTaskBtns.forEach((btn) => {
   btn.addEventListener("click", function(e) {
