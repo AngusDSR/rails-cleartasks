@@ -1,6 +1,6 @@
 .container-main {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   height: 99vh;
   margin: 0.2rem;
   padding: 0;
@@ -9,14 +9,32 @@
 }
 
 .container-tasks {
-  display: inherit;
   flex-direction: column;
-  flex-grow: 0.2;
+  background-color: $blue;
+  color: #fff;
 }
 
-
-.container-notes {
-  display: inherit;
+.container-notes-col {
+  display: flex;
   flex-direction: column;
-  flex-grow: 0.8;
+  // flex-grow: 0.8;
+}
+
+.container-notes-new {
+  border-bottom: solid 1px $light-gray;
+// textbox
+}
+
+.container-notes-details {
+  background-color: $light-blue;
+  ;
+  // add colours
+  // scrollable list
+  }
+
+.section-title {
+  background-color: $gray;
+  font-weight: 100;
+  text-align: center;
+  color: $light-gray;
 }

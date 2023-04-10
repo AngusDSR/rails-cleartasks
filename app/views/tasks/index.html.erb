@@ -1,19 +1,20 @@
-<%# 'Tasks' have details %>
+<%# 'Tasks' with details %>
 <div class="container-tasks">
+  <h2 class="section-title">Tasks</h2>
   <%= render "tasks/tasks", tasks: @tasks %>
 </div>
 
-<div class="container-notes">
+<%# New tasks entered as rough notes %>
+<div class="container-notes-col">
   <%= render "tasks/new_notes", new_task: @new_task %>
-  <hr>
 
-  <%# 'Notes' are new tasks with content but no details %>
-  <h2>Notes</h2>
-  <% @new_tasks.each do |task| %>
-    <div>
-      <input type="checkbox">
-      <%= render "tasks/update_form", task:task %>
-      <hr>
-    </div>
-  <% end %>
+  <%# Notes that need details from user %>
+  <div class="container-notes-details">
+    <h2 class="section-title">Notes</h2>
+    <% @new_tasks.each do |task| %>
+      <div>
+        <%= render "tasks/add_task_details", task:task %>
+      </div>
+    <% end %>
+  </div>
 </div>

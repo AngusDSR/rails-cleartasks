@@ -7,16 +7,13 @@ import "bootstrap"
 const newNote = document.getElementById('new_task');
 const tasks = document.querySelectorAll('.note-text');
 const closeTaskBtn = document.querySelectorAll('.btn-close');
-const taskViewBtns = document.querySelectorAll('.btn-view-task-details');
+const taskNamesText = document.querySelectorAll('.text-task-name');
 const noteTexts = document.querySelectorAll('.note-text');
 const CloseUpdateTaskBtns = document.querySelectorAll('.btn-close-task-update');
 
 window.addEventListener('keydown', function(e) {
-  console.log(e.key === 'Enter' && e.ctrlKey)
     if (e.key === 'Enter' && e.ctrlKey) {
     e.preventDefault();
-    console.log(newNote);
-    console.dir(newNote);
     newNote.submit();
   }
 });
@@ -34,10 +31,12 @@ tasks.forEach((task) => {
 //   });
 // });
 
-taskViewBtns.forEach((task) => {
-  task.addEventListener("click", function(e) {
-    task.nextElementSibling.nextElementSibling.style.display = "block";
-    task.style.display = "none";
+taskNamesText.forEach((taskNameText) => {
+  taskNameText.addEventListener("click", function(e) {
+    taskNameText.nextElementSibling.style.display = "block";
+    taskNameText.style.display = "none";
+    console.log(taskNameText)
+    console.log(taskNameText.nextElementSibling)
   });
 });
 

@@ -1,14 +1,10 @@
 class TasksController < ApplicationController
-
   def index
-    # notes
-    # filter the tasks based on what filled are empty
-
-    @new_tasks = Task.where.not(content: nil).where(reason: [nil, '']).order(created_at: :desc)
-    .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
-    .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
     @new_task = Task.new
-    @tasks = Task.where.not(content: '', name: '', due_date: '', reason: '')
+    @new_tasks = Task.where.not(content: nil).where(reason: [nil, '']).order(created_at: :desc)
+                     .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
+                     .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
+    @tasks = Task.where(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
   end
 
   def create
