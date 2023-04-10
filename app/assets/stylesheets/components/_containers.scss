@@ -1,0 +1,22 @@
+.container-main {
+  display: flex;
+  flex-direction: row;
+  height: 99vh;
+  margin: 0.2rem;
+  padding: 0;
+  border: solid rgb(14, 13, 22) 1px;
+  border-radius: 10px;
+}
+
+.container-tasks {
+  display: inherit;
+  flex-direction: column;
+  flex-grow: 0.2;
+}
+
+
+.container-notes {
+  display: inherit;
+  flex-direction: column;
+  flex-grow: 0.8;
+}

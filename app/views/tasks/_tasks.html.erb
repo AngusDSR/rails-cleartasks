@@ -1,0 +1,14 @@
+<h2>Tasks:</h2>
+<% tasks.each do |task| %>
+  <button class="btn-view-task-details">open task</button>
+  <p> <%= task.name %>  </p>
+  <div class="view-task">
+    <p>You have to: <%= task.name %></p>
+    <p> By: <%= task.due_date %></p>
+    <p> Because: <%= task.reason %></p>
+    <p> For: <%= task.contact %> </p>
+    <p> * <%= task.importance %> </p>
+    <p> * <%= task.difficulty %> </p>
+    <p>[Sub tasks here]</p>
+  </div>
+<% end %>

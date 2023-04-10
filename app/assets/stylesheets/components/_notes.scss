@@ -5,3 +5,31 @@
     font-weight: bold;
   }
 }
+
+.input-notes {
+  resize: none;
+  height: 60vh;
+  border: none;
+  outline: none;
+  text-align: left;
+  line-height: 2;
+  &::placeholder {
+    text-align: center;
+    line-height: 20rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #D6CCFF;
+  }
+  &:focus {
+    background-color: #0c0c0c;
+    color: #fff;
+  }
+}
+
+.instruction-note {
+  margin: 0;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: right;
+}
