@@ -13,12 +13,12 @@ This app is a work in progress, and we hope to add more features in the future. 
 ## Installation
 To set up the app locally, follow these steps:
 
-Install Rails on your machine
-Clone repo to your machine
-Run `bundle install` to install dependencies
-Run rails `db:migrate` to create the database
-Run `rails s` to start the server
-Navigate to localhost:3000 in your web browser to use the app
+1. Install Rails on your machine
+2. Clone repo to your machine
+3. Run `bundle install` to install dependencies
+4. Run rails `db:migrate` to create the database
+5. Run `rails s` to start the server
+6. Navigate to localhost:3000 in your web browser to use the app
 
 ### Known Issues
 This app is a work in progress, and there may be some issues or limitations. If you encounter any problems while using the app, please let us know.
