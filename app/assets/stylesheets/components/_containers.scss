@@ -1,7 +1,7 @@
 .container-main {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  height: 99vh;
+  height: 98.5vh;
   margin: 0.2rem;
   padding: 0;
   border: solid rgb(14, 13, 22) 1px;
@@ -12,6 +12,10 @@
   flex-direction: column;
   background-color: $blue;
   color: #fff;
+  border-radius: 10px 0 0 10px;
+  .section-title {
+    border-radius: 10px 0 0;
+  }
 }
 
 .container-notes-col {
@@ -21,13 +25,13 @@
 
 .container-notes-new {
   border-bottom: solid 1px $light-gray;
-// textbox
 }
 
 .container-notes-details {
   background-color: $light-blue;
   height: 100%;
-  }
+  border-radius: 0 0 10px;
+}
 
 .section-title {
   padding: 0.5rem 0;
