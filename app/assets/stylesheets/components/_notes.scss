@@ -8,19 +8,18 @@
 .input-notes {
   resize: none;
   height: 60vh;
-  padding: 1.5rem;
+  padding: 1rem;
   border: none;
   outline: none;
   text-align: left;
   line-height: 2;
   &::placeholder {
     text-align: center;
-    line-height: 22rem;
+    line-height: 18rem;
     font-size: 1.4rem;
     font-weight: 600;
     color: #D6CCFF;
     background-image: linear-gradient(to right, #D6CCFF, #fff, $light-blue);
-    background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

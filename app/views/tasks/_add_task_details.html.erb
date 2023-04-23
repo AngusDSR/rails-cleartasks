@@ -13,7 +13,7 @@
       <div>
         <p><%= f.input :name, required: true,  placeholder: "Task name: I have to..."  %></p>
         <p><%= f.input :reason, required: true,  placeholder: 'Because/in time for...' %></p>
-        <p><%= f.input :due_date, include_blank: true %></p>
+        <%= f.input :due_date, html5: true, min: Date.today.to_s %>
       </div>
       <p><%= f.input :content %></p>
       <p><%= f.input :importance, default: '' %></p>
