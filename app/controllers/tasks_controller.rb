@@ -7,6 +7,10 @@ class TasksController < ApplicationController
     @tasks = Task.where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
   end
 
+  def new
+    @task = Task.new # Define the @task instance variable here
+  end
+
   def create
     @task = Task.new(task_params)
     if @task.save
