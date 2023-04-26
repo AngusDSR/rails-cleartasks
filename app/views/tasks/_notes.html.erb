@@ -5,7 +5,7 @@
 <% else %>
   <ul class="list-notes">
     <% new_tasks.each do |task| %>
-      <%= render "tasks/add_task_details", task:task %>
+      <%= render "tasks/add_task_details", {task:task, @subtask:subtask} %>
     <% end %>
   </ul>
 <% end %>

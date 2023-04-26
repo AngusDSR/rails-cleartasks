@@ -1,6 +1,0 @@
-<%# ,url: task_subtasks_path(@task), %>
-<%= form_with(model: [task, Subtask.new], local: true) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content, required: true %>
-  <%= form.submit "Create Subtask" %>
-<% end %>

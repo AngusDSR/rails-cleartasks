@@ -6,9 +6,9 @@ class TasksController < ApplicationController
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
     # @tasks = Task.where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
 
-    @tasks = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
-    # defined the subtask instance variable
-    @subtask = Subtask.new
+    # @tasks = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+    # # defined the subtask instance variable
+    # @new_subtask = Subtask.new
   end
 
   def new
@@ -21,8 +21,8 @@ class TasksController < ApplicationController
       redirect_to root_path
     else
       # ive added .includes
-      # @tasks = Task.all
-      @task = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+      @tasks = Task.all
+      # @task = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
       render :index
     end
   end

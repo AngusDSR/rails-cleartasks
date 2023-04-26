@@ -20,6 +20,14 @@
       <p><%= f.input :difficulty, default: '' %></p>
       <%= f.submit %>
     <% end %>
+
+    <%= form_with(model: [task, subtask], local: true) do |form| %>
+    <%= f.hidden_field :task_id, value: task.id %>
+    <%= form.label :content %>
+    <%= form.text_field :content, required: true %>
+    <%= form.submit "Create Subtask" %>
+    <% end %>
+
     <%# why is it not confirming? %>
     <%= button_to "Destroy! 💣", task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }, class:"btn btn-danger" %>
     <button class="btn-close-task-update">Close</button>
