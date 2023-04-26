@@ -4,7 +4,15 @@ class TasksController < ApplicationController
     @new_tasks = Task.where.not(content: nil).where(reason: [nil, '']).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
-    @tasks = Task.where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+    # @tasks = Task.where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+
+    @tasks = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
+    # defined the subtask instance variable
+    @subtask = Subtask.new
+  end
+
+  def new
+    @task = Task.new # Define the @task instance variable here
   end
 
   def create
@@ -12,7 +20,9 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to root_path
     else
-      @tasks = Task.all
+      # ive added .includes
+      # @tasks = Task.all
+      @task = Task.includes(:subtasks).where.not(content: ['', nil], name: ['', nil], due_date: ['', nil], reason: ['', nil])
       render :index
     end
   end
@@ -34,6 +44,7 @@ class TasksController < ApplicationController
     end
     # delete subtasks
   end
+
 
   private
 

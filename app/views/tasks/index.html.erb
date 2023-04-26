@@ -14,3 +14,17 @@
     <%= render "tasks/notes", new_tasks: @new_tasks %>
   </div>
 </div>
+<div>
+  <% @tasks.each do |task| %>
+    <div class="task">
+      <h3><%= task.name %></h3>
+      <p><%= task.content %></p>
+      <ul>
+        <% task.subtasks.each do |subtask| %>
+          <li><%= subtask.content %></li>
+        <% end %>
+      </ul>
+      <%= render partial: "create_subtask", locals: { task: task} %>
+    </div>
+  <% end %>
+</div>
