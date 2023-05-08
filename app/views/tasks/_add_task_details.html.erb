@@ -21,36 +21,32 @@
           <%= f.input :due_date, html5: true, min: Date.today.to_s %>
         </div>
       </div>
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <%= f.input :content, input_html: { rows: 5, class: "rounded-4" }, grid_wrapper_html: { class: "flex-grow-1" } %>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <%= render "new_subtask" %>
-          <div class="col-md-6">
-            <%= f.label :importance, class: 'form-label text-light' %>
-            <%= f.input :importance, as: :range, input_html: { min: '0', max: '5' } %>
-          </div>
-          <div class="col-md-6">
-            <%= f.label :difficulty, class: 'form-label text-light' %>
-            <%= f.input :difficulty, as: :range, input_html: { min: '0', max: '5' } %>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <%= f.input :content, input_html: { rows: 5, class: "rounded-4" }, grid_wrapper_html: { class: "flex-grow-1" } %>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+
+            <div class="col-md-6">
+              <%= f.label :importance, class: 'form-label text-light' %>
+              <%= f.input :importance, as: :range, input_html: { min: '0', max: '5' } %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-flex">
-      <%= f.button :submit, class: "btn btn-sm btn-light" do %>
-        <%= icon('fa-solid', 'user-secret', class: "fa-7x fa-shake") %>
-        Save Changes
-      <% end %>
-      <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger" do %>
-          <i class="fa-regular fa-trash-can"></i>
-          Delete note
-        <% end %>
-        <button class="btn btn-sm btn-light btn-close-task-update">Close</button>
-    </div>
+      <div class="d-flex">
+        <%= f.submit "Save", class: "me-2" %>
+        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
+            <i class="fa-regular fa-trash-can"></i>
+            Delete note
+          <% end %>
+          <button class="btn btn-sm btn-light btn-close-task-update">Close</button>
+      </div>
     <% end %>
+    Nested forms don't work - we need to do something smart with this subtask button.
+    <%= render "new_subtask" %>
     <hr>
   </div>
 </div>
+<hr>

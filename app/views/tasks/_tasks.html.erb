@@ -1,10 +1,11 @@
 <% if @tasks.empty? %>
-  <p>No tasks - you're on top of things</p>
+  <hr>
+  <p class="text-center">No tasks - you're on top of things</p>
   <hr>
 <% else %>
   <div class="accordion" id="accordionTasks">
     <% @tasks.each_with_index do |task, index| %>
-      <div class="accordion-item">
+      <div class="accordion-item bg-dark">
         <h2 class="accordion-header" id="heading<%= index %>">
           <button
             class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
