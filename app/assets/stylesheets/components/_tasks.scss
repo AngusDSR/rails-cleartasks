@@ -1,14 +1,7 @@
-p.task-name {
-  font-size: 0.8rem;
-  color: #fff;
+.task-name {
   &:hover {
+    background-color: $light-blue;
     font-weight: 500;
     color: $light-gray;
   }
-
-  &::after {
-    content: " ▶ ";
-    color: #fff;
-  }
-
 }
