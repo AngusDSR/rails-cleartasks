@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  has_many :subtasks
+  has_many :subtasks, dependent: :destroy
 
   # callbacks
   after_initialize :set_task_content_original

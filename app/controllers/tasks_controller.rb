@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to root_path
     else
-      # render :index, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -26,8 +26,9 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.destroy
       redirect_to root_path
+    else
+      render :index, status: :unprocessable_entity
     end
-    # delete subtasks
   end
 
 
