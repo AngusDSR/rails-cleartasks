@@ -14,9 +14,10 @@
         </h2>
         <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
           <div class="accordion-body text-light">
-            <p>You have to <%= task.name %></p>
-            <p>By <%= task.due_date.strftime('%A %e %B') %></p>
+            <p>You have to <strong><%= task.name %></strong></p>
+            <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
             <p><%= task.reason %></p>
+            [Add sub task relationship]
             <button>See original note</button>
           </div>
         </div>

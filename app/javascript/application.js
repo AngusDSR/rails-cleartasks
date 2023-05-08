@@ -9,7 +9,6 @@ const noteTextarea = newNoteForm.lastChild;
 const noteTitles = document.querySelectorAll('.note-title');
 // const tasks = document.querySelectorAll('.note-title');
 // const closeTaskBtn = document.querySelectorAll('.btn-close');
-const taskNames = document.querySelectorAll('.task-name');
 const CloseUpdateTaskBtns = document.querySelectorAll('.btn-close-task-update');
 
 // Submit form and save notes
@@ -28,14 +27,6 @@ noteTitles.forEach((title) => {
   });
 });
 
-// Show details of saved tasks
-taskNames.forEach((task) => {
-  task.addEventListener("click", function(e) {
-    task.nextElementSibling.style.display = "block";
-    task.style.display = "none";
-  });
-});
-
 // Hide task details
 // closeTaskBtn.forEach((task) => {
 //   task.addEventListener("click", function(e) {
@@ -43,7 +34,6 @@ taskNames.forEach((task) => {
 //     console.log('line 42')
 //   });
 // });
-
 
 
 CloseUpdateTaskBtns.forEach((btn) => {

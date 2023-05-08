@@ -22,9 +22,11 @@
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-md-5">
-          <%= f.label :importance, class: 'form-label text-light m-0 p-0' %>
-          <%= f.input :importance, as: :range, input_html: { min: '0', max: '5' } %>
+        <div class="col-md-5" data-controller="importance">
+          <label class="integer optional form-label text-light m-0 p-0" for="task_importance">
+            Importance: <span data-importance-target="span"></span>
+          </label>
+          <%= f.input :importance, as: :range, input_html: { data: { action: "input->importance#changeImportance", "importance-target": "slider" }, min: '0', max: '5' } %>
           <%= f.input :content, input_html: { rows: 5 }, grid_wrapper_html: { class: "flex-grow-1" } %>
         </div>
         <div class="col-md-5">
