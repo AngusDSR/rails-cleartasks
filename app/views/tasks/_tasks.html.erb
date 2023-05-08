@@ -17,7 +17,16 @@
             <p>You have to <strong><%= task.name %></strong></p>
             <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
             <p><%= task.reason %></p>
-            [Add sub task relationship]
+            <div>
+              <ul>
+                <% task.subtasks.each do |st| %>
+                  <div class="d-flex flex-row">
+                    ⏹️
+                    <li><%= st.content %></li>
+                  </div>
+                <% end %>
+              </ul>
+            </div>
             <button>See original note</button>
           </div>
         </div>

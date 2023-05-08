@@ -1,19 +1,21 @@
 class SubtasksController < ApplicationController
-
-  before_action :set_task, only: %i[new destroy create]
-
-  def new
-    @subtask = Subtask.new
-  end
+  before_action :set_task, only: %i[create update destroy]
 
   def create
     @subtask = Subtask.new(subtask_params)
     @subtask.task = @task
-    @subtask.save
+    # this needs to popover without refreshing the page / validation in the form
+    # Using AJAX and js
+    flash[:error] = "Enter at least 5 characters" unless @subtask.save
+    # redirect_to root_path
+  end
+
+  def update
+    # TO DO
   end
 
   def destroy
-
+    # TO DO
   end
 
   private
@@ -23,6 +25,6 @@ class SubtasksController < ApplicationController
   end
 
   def set_task
-    @task = params[:subtask][:task_id]
+    @task = Task.find(params[:task_id])
   end
 end

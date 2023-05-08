@@ -5,6 +5,7 @@ class TasksController < ApplicationController
                      .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
     @tasks = Task.where.not(name: ['', nil], due_date: ['', nil], reason: ['', nil])
+    @subtask = Subtask.new
   end
 
   def create

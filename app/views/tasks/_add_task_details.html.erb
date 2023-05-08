@@ -30,8 +30,15 @@
           <%= f.input :content, input_html: { rows: 5 }, grid_wrapper_html: { class: "flex-grow-1 mb-2" } %>
         </div>
         <div class="col-md-5">
-          FAKE form here
-          <%# What looks like a form but then when clicked, it submits a form which is outside of the form %>
+            <div>
+            <%# What looks like a form but then when clicked, it submits a form which is outside of the form %>
+            <% task.subtasks.each do |st| %>
+              <div class="d-flex justify-content-end sub-task-item">
+                <p><%= st.content %></p>
+                <i class="fa-solid fa-xmark btn btn-lg text-light"></i>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="d-flex">
@@ -44,7 +51,7 @@
       </div>
     <% end %>
     <%# Nested forms don't work - we need to do something smart with this subtask button. %>
-    <%= render "new_subtask" %>
+    <%= render "new_subtask", {task:task} %>
     <hr>
   </div>
 </div>
