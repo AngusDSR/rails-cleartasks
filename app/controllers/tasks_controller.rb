@@ -30,6 +30,7 @@ class TasksController < ApplicationController
     # delete subtasks
   end
 
+
   private
 
   def task_params
