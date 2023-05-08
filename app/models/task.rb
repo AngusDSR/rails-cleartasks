@@ -25,7 +25,7 @@ class Task < ApplicationRecord
     subtasks = []
     File.open(Rails.public_path.join('task_log.txt'), 'w') do |file|
       Task.all.order('due_date DESC, importance').each do |record|
-        subtasks << record.subtasks.each(&:name)
+        subtasks << record.subtasks.each(&:content)
         # file.write("#{record.name}, #{record.reason}, by #{record.due_date}\n#{subtasks.join('\n-') if subtasks.any?}")
         file.write("#{record.name}, #{record.reason}, by #{record.due_date}\n")
       end
