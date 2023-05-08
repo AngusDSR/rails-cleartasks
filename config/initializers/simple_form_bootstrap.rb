@@ -121,7 +121,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical multi select
-  config.wrappers :vertical_multi_select, class: 'mb-3' do |b|
+  config.wrappers :vertical_multi_select, class: 'mb-0' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'form-label'
@@ -133,7 +133,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical range input
-  config.wrappers :vertical_range, class: 'mb-3' do |b|
+  config.wrappers :vertical_range, class: 'mb-1' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :readonly
@@ -148,7 +148,7 @@ SimpleForm.setup do |config|
   # horizontal forms
   #
   # horizontal default_wrapper
-  config.wrappers :horizontal_form, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_form, class: 'row mb-0' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -244,7 +244,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal range input
-  config.wrappers :horizontal_range, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_range, class: 'row mb-0' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :readonly
