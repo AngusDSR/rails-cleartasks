@@ -1,0 +1,8 @@
+<%= form_for :subtask do |f| %>
+  <div class="input-group my-3">
+    <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control" %>
+    <%= f.button :submit, class: "input-group-text" do %>
+      <%= icon('fas', 'plus') %>
+    <% end %>
+  </div>
+<% end %>

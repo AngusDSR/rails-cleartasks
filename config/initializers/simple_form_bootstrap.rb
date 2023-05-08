@@ -121,7 +121,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical multi select
-  config.wrappers :vertical_multi_select, class: 'mb-3' do |b|
+  config.wrappers :vertical_multi_select, class: 'mb-0' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'form-label'
@@ -133,7 +133,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical range input
-  config.wrappers :vertical_range, class: 'mb-3' do |b|
+  config.wrappers :vertical_range, class: 'mb-1' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :readonly
@@ -148,7 +148,7 @@ SimpleForm.setup do |config|
   # horizontal forms
   #
   # horizontal default_wrapper
-  config.wrappers :horizontal_form, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_form, class: 'row mb-0' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -230,7 +230,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal multi select
-  config.wrappers :horizontal_multi_select, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_multi_select, class: 'row mb-5' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 col-form-label'
@@ -244,13 +244,13 @@ SimpleForm.setup do |config|
   end
 
   # horizontal range input
-  config.wrappers :horizontal_range, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_range, class: 'row mb-0' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :readonly
     b.optional :step
     b.use :label, class: 'col-sm-3 col-form-label pt-0'
-    b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
+    b.wrapper :grid_wrapper, class: 'col-sm-9 w-100' do |ba|
       ba.use :input, class: 'form-range', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
       ba.use :hint, wrap_with: { class: 'form-text' }

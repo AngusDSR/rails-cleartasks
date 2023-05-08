@@ -18,6 +18,7 @@
   width: 90%;
   background-color: #fff;
   color: $gray;
+  cursor: 1pointer;
   &:hover {
     color: #000;
     scale: 1.01;
@@ -38,6 +39,24 @@
   display: none;
 }
 
-.note-details::placeholder {
-  font-weight: 600;
+.note-details {
+  resize: none;
+  &::placeholder {
+    font-weight: 600;
+  }
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: $gray;
+  height: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: $light-gray;
+  transition: 0.1s;
+  &:hover {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: #fff;
+    transform: scale(1.1);
+  }
 }

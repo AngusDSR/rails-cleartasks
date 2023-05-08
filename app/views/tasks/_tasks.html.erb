@@ -1,17 +1,27 @@
-<% if @tasks.nil? || @tasks.empty? %>
-    <p>No tasks - you're on top of things</p>
-    <hr>
-  <% else %>
-    <% tasks.each do |task| %>
-      <p class="task-name"> <%= task.name %></p>
-      <div class="view-task">
-        <p>You have to: <%= task.name %></p>
-        <p> By: <%= task.due_date %></p>
-        <p> Because: <%= task.reason %></p>
-        <p> ● <%= task.importance %> </p>
-        <p> ● <%= task.difficulty %> </p>
-        <p>[Sub tasks here]</p>
+<% if @tasks.empty? %>
+  <hr>
+  <p class="text-center">No tasks - you're on top of things</p>
+  <hr>
+<% else %>
+  <div class="accordion bg-transparent" id="accordionTasks">
+    <% @tasks.each_with_index do |task, index| %>
+      <div class="accordion-item border border-0">
+        <h2 id="heading<%= index %>">
+          <button
+            class="task-name accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+            <%= task.name %>
+          </button>
+        </h2>
+        <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
+          <div class="accordion-body text-light">
+            <p>You have to <strong><%= task.name %></strong></p>
+            <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
+            <p><%= task.reason %></p>
+            [Add sub task relationship]
+            <button>See original note</button>
+          </div>
+        </div>
       </div>
-      <hr>
     <% end %>
-  <% end %>
+  </div>
+<% end %>
