@@ -230,7 +230,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal multi select
-  config.wrappers :horizontal_multi_select, class: 'row mb-3' do |b|
+  config.wrappers :horizontal_multi_select, class: 'row mb-5' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 col-form-label'
@@ -250,7 +250,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.optional :step
     b.use :label, class: 'col-sm-3 col-form-label pt-0'
-    b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
+    b.wrapper :grid_wrapper, class: 'col-sm-9 w-100' do |ba|
       ba.use :input, class: 'form-range', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
       ba.use :hint, wrap_with: { class: 'form-text' }

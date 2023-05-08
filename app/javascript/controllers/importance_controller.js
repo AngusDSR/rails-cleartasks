@@ -10,6 +10,6 @@ export default class extends Controller {
 
   changeImportance(e) {
     this.spanTarget.innerHTML = this.sliderTarget.value;
-    // console.log('changed');
+    console.dir(this.spanTarget.style);
   }
 }

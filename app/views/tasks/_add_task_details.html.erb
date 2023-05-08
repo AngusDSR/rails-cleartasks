@@ -12,7 +12,9 @@
     <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
       <div class="row mb-0">
         <div class="col-md-4">
-          <%= f.input :name, required: true,  placeholder: "Task name: I have to...", grid_wrapper_html: { class: "flex-grow-1" } %>
+          <div class="flex-grow-1">
+            <%= f.input :name, required: true,  placeholder: "Task name: I have to...", grid_wrapper_html: { class: "flex-grow-1" } %>
+          </div>
         </div>
         <div class="col-md-4">
           <%= f.input :reason, required: true,  placeholder: 'Because/in time for...', grid_wrapper_html: { class: "flex-grow-1" } %>
@@ -21,7 +23,7 @@
           <%= f.input :due_date, html5: true, min: Date.today.to_s %>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-1">
         <div class="col-md-5" data-controller="importance">
           <label class="integer optional form-label text-light m-0 p-0" for="task_importance">
             Importance: <span data-importance-target="span"></span>
