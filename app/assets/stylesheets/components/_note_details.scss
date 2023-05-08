@@ -18,7 +18,7 @@
   width: 90%;
   background-color: #fff;
   color: $gray;
-  cursor: 1pointer;
+  cursor: pointer;
   &:hover {
     color: #000;
     scale: 1.01;
@@ -59,4 +59,13 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #fff;
     transform: scale(1.1);
   }
+}
+
+.sub-task-item {
+  padding: 0.4rem;
+  background-color: $gray;
+  color: $light-gray;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: roboto;
 }
