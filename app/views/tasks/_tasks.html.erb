@@ -15,7 +15,6 @@
         <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
           <div class="accordion-body text-light">
             <p>You have to <strong><%= task.name %></strong></p>
-            <%# <%= raise %>
             <% if task.due_date.present? %>
               <p>By <strong>task.due_date.strftime('%A %e %B')</strong></p>
             <% end %>
