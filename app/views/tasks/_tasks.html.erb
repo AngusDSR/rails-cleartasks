@@ -16,17 +16,26 @@
           <div class="accordion-body text-light">
             <p>You have to <strong><%= task.name %></strong></p>
             <% if task.due_date.present? %>
-              <p>By <strong>task.due_date.strftime('%A %e %B')</strong></p>
+              <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
             <% end %>
             <p><%= task.reason %></p>
-            <div>
-              <ul>
-                <% task.subtasks.each do |st| %>
-                  <div class="d-flex flex-row">
-                    <p><%= st.content %><i class="fa-solid fa-square"></i></p>
-                  </div>
-                <% end %>
-              </ul>
+            <div data-controller="mark-subtask-complete">
+              <% task.subtasks.each do |st| %>
+
+                <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center">
+                  <p><small>
+                    <%= st.content %>
+                  </small></p>
+                  <p class="fs-5">
+                  <% if st.completion  %>
+                      <i class="fa-regular fa-square"></i>
+                    <% else %>
+                      <i class="fa-solid fa-square"></i>
+                    <% end %>
+                  </p>
+                </div>
+                <hr>
+              <% end %>
             </div>
             <button>See original note</button>
           </div>

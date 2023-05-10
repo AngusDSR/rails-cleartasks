@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ImportanceController from "./importance_controller"
 application.register("importance", ImportanceController)
+
+import MarkSubtaskCompleteController from "./mark_subtask_complete_controller"
+application.register("mark-subtask-complete", MarkSubtaskCompleteController)
