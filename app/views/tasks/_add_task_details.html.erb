@@ -35,7 +35,9 @@
             <% task.subtasks.each do |st| %>
               <div class="d-flex justify-content-end sub-task-item">
                 <p><%= st.content %></p>
+                <%= link_to task_subtask_path(task, st), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
                 <i class="fa-solid fa-xmark btn btn-lg text-light"></i>
+                <% end %>
               </div>
             <% end %>
           </div>
