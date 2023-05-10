@@ -21,21 +21,20 @@
             <p><%= task.reason %></p>
             <div data-controller="mark-subtask-complete">
               <% task.subtasks.each do |st| %>
-
                 <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center" data-action="click->mark-subtask-complete#markCompleted">
                   <p><small>
                     <%= st.content %>
                   </small></p>
                   <p class="fs-5">
                   <%= form_for [task, st] do |form| %>
-                  <%= st.content %>
-                  <%= form.check_box :completion %>
-                  <%= form.submit "Search" %>
+                    <%= st.content %>
+                    <%= form.check_box :completion %>
+                    <%= form.submit "Search" %>
                   <% end %>
                   <% if st.completion  %>
-                      <i class="fa-regular fa-square"></i>
+                      <i class="fa-regular fa-square" data-target-mark-subtask-complete="checkbox"></i>
                     <% else %>
-                      <i class="fa-solid fa-square"></i>
+                      <i class="fa-solid fa-square" data-target-mark-subtask-complete="checkbox"></i>
                     <% end %>
                   </p>
                 </div>
