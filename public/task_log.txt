@@ -1,4 +1,1 @@
-, , by 
-Go shopping, Need to eat, by 2023-05-18
-Go shopping, I have to, by 2023-05-17
-Run some rspec on this beast, I need to learn rspec, by 2023-05-15
+do shopping for breakfst, reason, by 
