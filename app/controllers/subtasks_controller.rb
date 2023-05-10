@@ -1,5 +1,7 @@
 class SubtasksController < ApplicationController
   before_action :set_task, only: %i[create update destroy]
+  # check syntax::
+  # after_action redirect_to root_path, only: %i[create update destroy]
 
   def create
     @subtask = Subtask.new(subtask_params)
@@ -11,24 +13,23 @@ class SubtasksController < ApplicationController
   end
 
   def update
-    raise
-    # TO DO
+    # raise
+    @subtask = Subtask.find(params[:id])
+    @subtask.completion = true unless params[:subtask][:completion].to_i == 1
+    redirect_to root_path
   end
 
   def destroy
     @subtask = Subtask.find(params[:id])
     @subtask.destroy
-    # raise
     redirect_to root_path
-    # TO DO
   end
 
   private
 
   def subtask_params
-    params.require(:subtask).permit(:content, :completed)
+    params.require(:subtask).permit(:content, :completion)
   end
-
 
   def set_task
     @task = Task.find(params[:task_id])
