@@ -19,7 +19,7 @@
               <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
             <% end %>
             <p><%= task.reason %></p>
-            <div>
+            <div data-controller="mark-subtask-complete">
               <% task.subtasks.each do |st| %>
 
                 <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center">
