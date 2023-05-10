@@ -11,6 +11,7 @@ class SubtasksController < ApplicationController
   end
 
   def update
+    raise
     # TO DO
   end
 
