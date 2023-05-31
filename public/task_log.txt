@@ -1,4 +1,6 @@
-Go shopping, Need to eat, by 2023-05-18
-Go do thing, On time, by 2023-05-18
-Go shopping, I have to, by 2023-05-17
-Run some rspec on this beast, I need to learn rspec, by 2023-05-15
+test name #1, test reason #1, by 
+, , by 
+week 1, BIG reason, by 2023-06-10
+shopping, big, by 2023-05-31
+shopping, we have to eat breakfast, by 2023-05-30
+test test, big, by 2023-05-30

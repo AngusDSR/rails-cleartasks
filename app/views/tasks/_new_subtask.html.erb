@@ -1,4 +1,6 @@
-<%= form_for [task, @subtask], url: task_subtasks_path(task) do |f| %>
+<%# <div class="subtask-container"></div> %>
+<div class="subtask-container" data-controller="subtask" data-target="subtask">
+<%= form_for [task, @subtask], url: task_subtasks_path(task), html: { data: { 'subtask-target': 'form' } } do |f| %>
   <%# this needs setting up properly with JS/Ajax %>
   <% if task.errors.any? %>
       <div id="error_explanation">
@@ -11,9 +13,10 @@
       </div>
     <% end %>
   <div class="input-group my-3">
-    <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control" %>
-    <%= f.submit class: "input-group-text" do %>
+    <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control", data: { 'subtask-target': 'content' } %>
+    <%= f.submit class: "input-group-text", data: { action: 'subtask#submitForm' } do %>
       <%= icon('fas', 'plus') %>
     <% end %>
   </div>
 <% end %>
+</div>
