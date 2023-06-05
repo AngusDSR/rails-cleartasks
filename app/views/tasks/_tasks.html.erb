@@ -7,6 +7,7 @@
     <% @tasks.each_with_index do |task, index| %>
       <div class="accordion-item border-0">
         <h2 class="mb-0" id="heading<%= index %>">
+        <%# this part should remain open after creating the task %>
           <button
             class="task-name accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
             <%= task.name %>
