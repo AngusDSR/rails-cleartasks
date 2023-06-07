@@ -22,16 +22,16 @@
               <% end %>
               <p><%= task.reason %></p>
               <div data-controller="mark-subtask-complete">
-                <% task.subtasks.each do |st| %>
+                <% task.subtasks.each_with_index do |st, index| %>
                   <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center">
                     <p class="fs-5">
-                      <%= form_for [task, st], method: :put do |form| %>
+                      <%= form_for [task, st], method: :put, data: {'mark-subtask-complete-target': 'subtaskCheckboxForm'} do |form|  %>
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <%= st.content %>
                         <%# data: { target: 'subtask.form' } %>
                         <%# 'mark-subtask-complete-target': 'checker' %>
-                        <%= form.check_box :completion, data: { 'action': 'change->mark-subtask-complete#handleCheck', 'mark-subtask-complete-target': 'checker' }, checked: st.completion %>
-                        <div data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
+                        <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, checked: st.completion %>
+                        <div id="<%=index%>" data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
                           <% if st.completion %>
                             <i class="fa-solid fa fa-check-square"></i>
                           <% else %>

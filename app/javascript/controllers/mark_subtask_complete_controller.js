@@ -2,43 +2,32 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["iconSubtaskCompletion", "checker"]
+  static targets = ["iconSubtaskCompletion", "checker", "subtaskCheckboxForm"]
   // The error message suggests that the controller is trying to access the iconTarget before it has been connected.
   //  This can happen if the controller is connected before the DOM elements are fully loaded.
   connect() {
-    // this.waitUntilLoaded(() => {
-      console.log(this.checkerTargets);
-      console.log(this.iconSubtaskCompletionTargets);
-    // });
+    console.log(this.subtaskCheckboxFormTargets);
   }
 
-  // waitUntilLoaded(callback) {
-  //   if (document.readyState === "loading") {
-  //     document.addEventListener("DOMContentLoaded", () => {
-  //       callback();
-  //     });
+
+  // handleCheck(event) {
+  //   const checkbox = event.currentTarget;
+  //   const icon = this.iconSubtaskCompletionTarget;
+
+  //   if (checkbox.checked) {
+  //     icon.classList.replace("fa-square", "fa-check-square");
   //   } else {
-  //     callback();
+  //     icon.classList.replace("fa-check-square", "fa-square");
   //   }
+
+  //   this.submitForm();
   // }
 
-  handleCheck(event) {
-    const checkbox = event.currentTarget;
-    const icon = this.iconSubtaskCompletionTarget;
-
-    if (checkbox.checked) {
-      icon.classList.replace("fa-square", "fa-check-square");
-    } else {
-      icon.classList.replace("fa-check-square", "fa-square");
-    }
-
-    this.submitForm();
-  }
-
-  submitForm() {
-    const form = this.element.querySelector("form");
+  submitForm(e) {
+    const form = this.subtaskCheckboxFormTargets[e.currentTarget.id]
     const formData = new FormData(form);
-
+    console.log(e.currentTarget.id);
+    console.log(this.subtaskCheckboxFormTargets);
     fetch(form.getAttribute("action"), {
       method: form.getAttribute("method"),
       body: formData,
@@ -59,21 +48,21 @@ export default class extends Controller {
       });
   }
 
-  toggleCompletion() {
-    const checkbox = this.checkboxTarget;
-    const icon = this.iconTarget;
+  toggleCompletion(e) {
+
+    const icon = e.currentTarget;
+    const checkbox = this.checkerTargets[icon.id];
 
     if (checkbox.checked) {
-      icon.innerHTML = '<i class="fa-solid fa fa-check-square"></i>';
+      icon.innerHTML = '<i class="fa-solid fa-square"></i>';
+      checkbox.checked = false
     } else {
       icon.innerHTML = '<i class="fa-regular fa fa-square"></i>';
+      checkbox.checked = true
     }
 
     this.submitForm();
   }
-
-
-
 }
 
 
