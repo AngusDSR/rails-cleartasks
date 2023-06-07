@@ -12,3 +12,9 @@ application.register("importance", ImportanceController)
 
 import MarkSubtaskCompleteController from "./mark_subtask_complete_controller"
 application.register("mark-subtask-complete", MarkSubtaskCompleteController)
+
+import SubtaskController from "./subtask_controller"
+application.register("subtask", SubtaskController)
+
+import SubtaskDeleteController from "./subtask_delete_controller"
+application.register("subtask-delete", SubtaskDeleteController)

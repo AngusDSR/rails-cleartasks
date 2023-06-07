@@ -7,40 +7,43 @@
     <% @tasks.each_with_index do |task, index| %>
       <div class="accordion-item border-0">
         <h2 class="mb-0" id="heading<%= index %>">
+        <%# this part should remain open after creating the task %>
           <button
             class="task-name accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
             <%= task.name %>
           </button>
         </h2>
-        <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
-          <div class="accordion-body text-light">
-            <p>You have to <strong><%= task.name %></strong></p>
-            <% if task.due_date.present? %>
-              <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
-            <% end %>
-            <p><%= task.reason %></p>
-            <div data-controller="mark-subtask-complete">
-              <% task.subtasks.each do |st| %>
-                <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center" data-action="click->mark-subtask-complete#markCompleted">
-                  <p><small>
-                    <%= st.content %>
-                  </small></p>
-                  <p class="fs-5">
-                  <%= form_for [task, st] do |form| %>
-                    <%= st.content %>
-                    <%= form.check_box :completion %>
-                    <%= form.submit "Search" %>
-                  <% end %>
-                  <% if st.completion  %>
-                      <i class="fa-regular fa-square" data-target-mark-subtask-complete="checkbox"></i>
-                    <% else %>
-                      <i class="fa-solid fa-square" data-target-mark-subtask-complete="checkbox"></i>
-                    <% end %>
-                  </p>
-                </div>
-                <hr>
+
+          <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
+            <div class="accordion-body text-light">
+              <p>You have to <strong><%= task.name %></strong></p>
+              <% if task.due_date.present? %>
+                <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
               <% end %>
-            </div>
+              <p><%= task.reason %></p>
+              <div data-controller="mark-subtask-complete">
+                <% task.subtasks.each_with_index do |st, index| %>
+                  <div class="d-flex flex-row bg-dark justify-content-evenly align-items-center">
+                    <p class="fs-5">
+                      <%= form_for [task, st], method: :put, data: {'mark-subtask-complete-target': 'subtaskCheckboxForm'} do |form|  %>
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <%= st.content %>
+                        <%# data: { target: 'subtask.form' } %>
+                        <%# 'mark-subtask-complete-target': 'checker' %>
+                        <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, checked: st.completion %>
+                        <div id="<%=index%>" data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
+                          <% if st.completion %>
+                            <i class="fa-solid fa fa-check-square"></i>
+                          <% else %>
+                            <i class="fa-regular fa fa-square"></i>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </p>
+                  </div>
+                  <hr>
+                <% end %>
+              </div>
             <button>See original note</button>
           </div>
         </div>
