@@ -2,36 +2,36 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["icon"]
+  static targets = ["iconSubtaskCompletion"]
   // The error message suggests that the controller is trying to access the iconTarget before it has been connected.
   //  This can happen if the controller is connected before the DOM elements are fully loaded.
   connect() {
-    this.waitUntilLoaded(() => {
-      console.log(this.iconTarget);
-    });
+    // this.waitUntilLoaded(() => {
+    //   console.log(this.iconTarget);
+    // });
   }
 
-  waitUntilLoaded(callback) {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => {
-        callback();
-      });
-    } else {
-      callback();
-    }
-  }
+  // waitUntilLoaded(callback) {
+  //   if (document.readyState === "loading") {
+  //     document.addEventListener("DOMContentLoaded", () => {
+  //       callback();
+  //     });
+  //   } else {
+  //     callback();
+  //   }
+  // }
 
   handleCheck(event) {
-    // const checkbox = event.currentTarget;
-    // const icon = this.iconTarget;
+    const checkbox = event.currentTarget;
+    const icon = this.iconTarget;
 
-    // if (checkbox.checked) {
-    //   icon.classList.replace("fa-square", "fa-check-square");
-    // } else {
-    //   icon.classList.replace("fa-check-square", "fa-square");
-    // }
+    if (checkbox.checked) {
+      icon.classList.replace("fa-square", "fa-check-square");
+    } else {
+      icon.classList.replace("fa-check-square", "fa-square");
+    }
 
-    // this.submitForm();
+    this.submitForm();
   }
 
   submitForm() {

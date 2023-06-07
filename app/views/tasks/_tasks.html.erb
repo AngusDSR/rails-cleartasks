@@ -29,7 +29,7 @@
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <%= st.content %>
                         <%= form.check_box :completion, data: { 'action': 'change->mark-subtask-complete#handleCheck' }, checked: st.completion %>
-                        <div data-mark-subtask-complete-target="icon" data-action="click->mark-subtask-complete#toggleCompletion">
+                        <div data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
                           <% if st.completion %>
                             <i class="fa-solid fa fa-check-square"></i>
                           <% else %>
