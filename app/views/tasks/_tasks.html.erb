@@ -28,7 +28,9 @@
                       <%= form_for [task, st], method: :put do |form| %>
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <%= st.content %>
-                        <%= form.check_box :completion, data: { 'action': 'change->mark-subtask-complete#handleCheck' }, checked: st.completion %>
+                        <%# data: { target: 'subtask.form' } %>
+                        <%# 'mark-subtask-complete-target': 'checker' %>
+                        <%= form.check_box :completion, data: { 'action': 'change->mark-subtask-complete#handleCheck', 'mark-subtask-complete-target': 'checker' }, checked: st.completion %>
                         <div data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
                           <% if st.completion %>
                             <i class="fa-solid fa fa-check-square"></i>

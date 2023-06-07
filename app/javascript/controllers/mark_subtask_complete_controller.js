@@ -2,12 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["iconSubtaskCompletion"]
+  static targets = ["iconSubtaskCompletion", "checker"]
   // The error message suggests that the controller is trying to access the iconTarget before it has been connected.
   //  This can happen if the controller is connected before the DOM elements are fully loaded.
   connect() {
     // this.waitUntilLoaded(() => {
-    //   console.log(this.iconTarget);
+      console.log(this.checkerTargets);
+      console.log(this.iconSubtaskCompletionTargets);
     // });
   }
 
@@ -23,7 +24,7 @@ export default class extends Controller {
 
   handleCheck(event) {
     const checkbox = event.currentTarget;
-    const icon = this.iconTarget;
+    const icon = this.iconSubtaskCompletionTarget;
 
     if (checkbox.checked) {
       icon.classList.replace("fa-square", "fa-check-square");
