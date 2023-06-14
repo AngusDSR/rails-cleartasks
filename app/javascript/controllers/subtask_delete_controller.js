@@ -3,10 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="subtask-delete"
 export default class extends Controller {
 
-
-
   connect() {
-    // console.log(this.deleteTarget);
   }
 
   deleteTask(event) {
