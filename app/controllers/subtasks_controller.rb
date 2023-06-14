@@ -1,7 +1,5 @@
   class SubtasksController < ApplicationController
     before_action :set_task, only: %i[create update destroy]
-    # check syntax::
-    # after_action redirect_to root_path, only: %i[create update destroy]
 
     def create
       @subtask = Subtask.new(subtask_params)
