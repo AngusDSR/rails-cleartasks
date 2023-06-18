@@ -1,6 +1,6 @@
 <%# 'Tasks' with details %>
-<div class="container-tasks border-end">
-  <h2 class="section-title m-0">Tasks</h2>
+<div class="container-tasks border-end" data-controller="hide-task-tabs">
+  <h2 class="section-title m-0" data-hide-task-tabs-target="tasksTitle">Tasks</h2>
   <%= render "tasks/tasks", tasks: @tasks %>
 </div>
 

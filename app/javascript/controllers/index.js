@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import HideTaskTabsController from "./hide_task_tabs_controller"
+application.register("hide-task-tabs", HideTaskTabsController)
+
 import ImportanceController from "./importance_controller"
 application.register("importance", ImportanceController)
 
