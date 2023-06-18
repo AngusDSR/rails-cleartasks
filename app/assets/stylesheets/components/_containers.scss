@@ -14,7 +14,7 @@
   color: #fff;
   border-radius: 10px 0 0 10px;
   .section-title {
-    border-radius: 10px 0 0;
+    border-radius: 10px 0 0 !important;
   }
 }
 
@@ -39,4 +39,9 @@
   font-weight: 100;
   text-align: center;
   color: $light-gray;
+}
+
+.task-as-title {
+  padding: 0.8rem;
+  font-size: calc(1.325rem + 0.9vw);
 }
