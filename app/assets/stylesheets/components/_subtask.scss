@@ -13,8 +13,13 @@ p.subtask-text {
 .edit_subtask {
   width: 100%;
   padding: 0.6rem;
+  padding-left: 0.4rem;
   display: flex;
   align-items: center;
+}
+
+.subtaskCheckIconDiv {
+  line-height: 1;
 }
 
 i.subtask-checker {

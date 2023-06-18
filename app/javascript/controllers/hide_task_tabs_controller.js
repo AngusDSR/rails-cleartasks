@@ -28,9 +28,5 @@ export default class extends Controller {
         button.classList.toggle('d-none')
       }
     });
-
-    // ensure that the current task has full height
-    console.log(taskBody)
-    console.dir(taskBody)
   }
 }

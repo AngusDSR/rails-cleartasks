@@ -18,44 +18,47 @@
           </button>
         </h2>
         <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
-          <div class="accordion-body text-light">
-            <p>You have to <strong><%= task.name %></strong></p>
-            <% if task.due_date.present? %>
-              <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
-            <% end %>
-            <p><%= task.reason %></p>
-            <div data-controller="mark-subtask-complete">
-              <% task.subtasks.each_with_index do |st, index| %>
-                <div class="div-subtask d-flex flex-row bg-gray">
-                  <%= form_for [task, st], method: :put, data: {'mark-subtask-complete-target': 'subtaskCheckboxForm'} do |form|  %>
-                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                    <p class="subtask-text <%= st.completion ? 'strikethrough' : '' %>"
-                      data-mark-subtask-complete-target="subtaskText">
-                      <%= st.content.truncate(20) %>
-                    </p>
-                    <div class="flex-grow-1"></div>
-                    <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, style: 'display: none;', checked: st.completion %>
-                    <div id="<%= index %>" data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
-                      <% if st.completion %>
-                        <i class="fa-solid fa-square subtask-checker"></i>
-                      <% else %>
-                        <i class="fa-regular fa fa-square subtask-checker"></i>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
+          <div class="accordion-body task-body text-light">
+            <div class="task-body-content">
+              <p>You have to <strong><%= task.name %></strong></p>
+              <% if task.due_date.present? %>
+                <p>By <strong><%= task.due_date.strftime('%A %e %B') %></strong></p>
               <% end %>
-              <p>button for complete whole task: progress bar for all subtasks</p>
+              <p><%= task.reason %></p>
+              <div data-controller="mark-subtask-complete">
+                <% task.subtasks.each_with_index do |st, index| %>
+                  <div class="div-subtask d-flex flex-row bg-gray">
+                    <%= form_for [task, st], method: :put, data: {'mark-subtask-complete-target': 'subtaskCheckboxForm'} do |form|  %>
+                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                      <p class="subtask-text <%= st.completion ? 'strikethrough' : '' %>"
+                        data-mark-subtask-complete-target="subtaskText">
+                        <%= st.content.truncate(20) %>
+                      </p>
+                      <div class="flex-grow-1"></div>
+                      <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, style: 'display: none;', checked: st.completion %>
+                      <div class="subtaskCheckIconDiv" id="<%= index %>"
+                      data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
+                        <% if st.completion %>
+                          <i class="fa-solid fa-square subtask-checker"></i>
+                        <% else %>
+                          <i class="fa-regular fa fa-square subtask-checker"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                <p>button for complete whole task: progress bar for all subtasks</p>
+              </div>
               <hr>
             </div>
             <div class="task-buttons">
-            <button>See original note</button>
-            <button>Edit</button>
-            <button>Add subtask</button>
-            <button>Delete</button>
+              <button>See original note</button>
+              <button>Edit</button>
+              <button>Add subtask</button>
+              <button>Delete</button>
+              <hr>
+              <button>Priority</button>
             </div>
-            <hr>
-            <button>Priority</button>
         </div>
         </div>
       </div>
