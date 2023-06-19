@@ -1,22 +1,28 @@
-<div>
-  Edit the task
+<div class="container m-5">
+  <h4>Edit task</h4>
+
   <%= simple_form_for @task do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name, class: 'form-label' %>
     <%= f.text_field :name, required: true %>
     <hr>
-    <%= f.label :content %>
+    <%= f.label :content, class: 'form-label' %>
     <%= f.text_field :content, required: true %>
     <hr>
-    <%= f.label :reason %>
+    <%= f.label :reason, class: 'form-label' %>
     <%= f.text_field :reason, required: true %>
     <hr>
-    <%= f.label :due_date %>
+    <%= f.label :due_date, class: 'form-label' %>
     <%= f.input :due_date, html5: true, min: Date.today.to_s, label: false %>
     <hr>
-    <%= f.label :importance %>
+    <%= f.label :importance, class: 'form-label' %>
     <%= f.input :importance, as: :range, input_html: { min: '0', max: '5' }, label: false %>
     <hr>
-    <%= f.label :completion %>
+    <%= f.label :content_original, "Original note", class: 'form-label' %>
+    <%= f.input :content_original, input_html: { rows: 3 }, grid_wrapper_html: { class: "flex-grow-1 mb-2" }, label: false %>
+    <hr>
+    <%= f.label :completion, class: 'form-label' %>
     <%= f.check_box :completion %>
+    <hr>
+    <%= f.submit "Save" %>
   <% end %>
 </div>
