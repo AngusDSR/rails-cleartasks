@@ -55,7 +55,10 @@
               <button>See original note</button>
               <button>Edit</button>
               <button>Add subtask</button>
-              <button>Delete</button>
+              <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Deleting detailed note, are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
+                <i class="fa-regular fa-trash-can"></i>
+                Delete note
+              <% end %>
               <hr>
               <button>Priority</button>
             </div>

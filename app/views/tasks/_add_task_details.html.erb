@@ -45,6 +45,7 @@
       </div>
       <div class="d-flex">
         <%= f.submit "Save", class: "me-2" %>
+        <%# TO DO: summary modal %>
         <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
             <i class="fa-regular fa-trash-can"></i>
             Delete note

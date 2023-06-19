@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = [ "tasksTitle", "taskTabButton" ]
 
   connect() {
-    console.log('I am here5')
   }
 
   highlightCurrentTask(e) {
