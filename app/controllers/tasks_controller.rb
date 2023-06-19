@@ -14,6 +14,12 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    # TO DO: Create modal, note view
+    # raise
+    @task = Task.find(params[:id])
+  end
+
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
@@ -31,7 +37,6 @@ class TasksController < ApplicationController
       render :index, status: :unprocessable_entity
     end
   end
-
 
   private
 

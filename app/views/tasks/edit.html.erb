@@ -1,0 +1,22 @@
+<div>
+  Edit the task
+  <%= simple_form_for @task do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+    <hr>
+    <%= f.label :content %>
+    <%= f.text_field :content, required: true %>
+    <hr>
+    <%= f.label :reason %>
+    <%= f.text_field :reason, required: true %>
+    <hr>
+    <%= f.label :due_date %>
+    <%= f.input :due_date, html5: true, min: Date.today.to_s, label: false %>
+    <hr>
+    <%= f.label :importance %>
+    <%= f.input :importance, as: :range, input_html: { min: '0', max: '5' }, label: false %>
+    <hr>
+    <%= f.label :completion %>
+    <%= f.check_box :completion %>
+  <% end %>
+</div>
