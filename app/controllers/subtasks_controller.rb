@@ -6,7 +6,7 @@
       @subtask.task = @task
 
       if @subtask.save
-        render json: { success: true }
+        redirect_to request.referer
       else
         render json: { success: false, errors: @subtask.errors.full_messages }
       end
@@ -16,9 +16,8 @@
       @task = Task.find(params[:task_id])
       @subtask = @task.subtasks.find(params[:id])
       @subtask.completion = params[:subtask][:completion] == '1'
-
       if @subtask.save
-        render json: { success: true }
+        redirect_to request.referer, status: :see_other
       else
         render json: { success: false, errors: @subtask.errors.full_messages }
       end
@@ -26,14 +25,11 @@
 
     def destroy
       @subtask = Subtask.find(params[:id])
-      # @subtask.destroy
       if @subtask.destroy
-        redirect_to root_path, status: :see_other
-        # render json: { success: true }
+        redirect_to request.referer, status: :see_other
       else
         render json: { success: false, errors: @subtask.errors.full_messages }
       end
-      # redirect_to root_path
     end
 
     private

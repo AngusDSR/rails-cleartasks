@@ -18,14 +18,17 @@ class TasksController < ApplicationController
     # TO DO: Create modal, note view
     # raise
     @task = Task.find(params[:id])
+    @subtask = Subtask.new
   end
 
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
+      # redirect_to root_path
       redirect_to root_path
+      # render :index, status: :unprocessable_entity, locals: { hide_container_main: true }
     else
-      render :index, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

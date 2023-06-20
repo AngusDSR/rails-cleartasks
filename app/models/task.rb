@@ -18,7 +18,8 @@ class Task < ApplicationRecord
   def due_date_must_be_in_future
     # allow nil values, only valid if there IS a date entered
     return if due_date.nil?
-    errors.add(:due_date.nil, "can't be in the past") unless due_date >= Date.today
+
+    errors.add(:due_date, "can't be in the past") unless due_date >= Date.today
   end
 
   def update_task_log
