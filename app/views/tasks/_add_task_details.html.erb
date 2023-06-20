@@ -30,13 +30,12 @@
           <%= f.input :content, input_html: { rows: 5 }, grid_wrapper_html: { class: "flex-grow-1 mb-2" } %>
         </div>
         <div class="col-md-5">
-            <div >
-            <%# What looks like a form but then when clicked, it submits a form which is outside of the form %>
+          <div >
             <% task.subtasks.each do |st| %>
               <div class="d-flex justify-content-end sub-task-item">
                 <p><%= st.content %></p>
                 <%= link_to task_subtask_path(task, st), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
-                <i class="fa-solid fa-xmark btn btn-lg text-light"></i>
+                  <i class="fa-solid fa-xmark btn btn-lg text-light"></i>
                 <% end %>
               </div>
             <% end %>
@@ -45,6 +44,7 @@
       </div>
       <div class="d-flex">
         <%= f.submit "Save", class: "me-2" %>
+        <%# TO DO: summary modal %>
         <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
             <i class="fa-regular fa-trash-can"></i>
             Delete note
@@ -52,7 +52,6 @@
         <button class="btn btn-sm btn-light btn-close-task-update">Close</button>
       </div>
     <% end %>
-    <%# Nested forms don't work - we need to do something smart with this subtask button. %>
     <%= render "new_subtask", {task:task} %>
     <hr>
   </div>

@@ -22,8 +22,11 @@
   </head>
 
   <body>
-
-    <div class="container-main">
+      <%# TEMPORARY - TO PREVENT GRID LAYOUT ON EDIT PAGE %>
+      <%# MAY NOT BE NECESARRY IF WE USE A MODAL %>
+      <% unless request.path.end_with?('edit') %>
+        <div class="container-main">
+      <% end %>
       <%= render "shared/alert" %>
       <%= yield %>
     </div>
