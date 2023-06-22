@@ -1,0 +1,18 @@
+.btn-new-subtask {
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  font-weight: bold;
+  background: #fff;
+  border: 0;
+  justify-content: center;
+  &:hover {
+    background: $light-gray;
+  }
+  i {
+    font-size: 1.8rem;
+    margin-right: 18%;
+    padding-left: 18%;
+  }
+}
