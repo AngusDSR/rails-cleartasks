@@ -6,15 +6,8 @@
     <% end %>
   </div>
   <%# DISPLAY SUBTASKS %>
-  <div >
-    <% @task.subtasks.each do |st| %>
-      <div class="d-flex justify-content-end">
-        <p><%= st.content %></p>
-        <%= link_to task_subtask_path(@task, st), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
-          <i class="fa-solid fa-xmark btn btn-lg text-light"></i>
-        <% end %>
-      </div>
-    <% end %>
+  <div>
+    <%= render "show_subtasks", {task:task} %>
     <%= render "new_subtask", {task:@task} %>
   </div>
   <%= simple_form_for @task do |f| %>

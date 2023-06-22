@@ -1,0 +1,9 @@
+<% task.subtasks.each do |st| %>
+  <div class="sub-task-item mb-1">
+    <p class="new-subtask-text"><%= st.content %></p>
+    <div class="flex-grow-1"></div>
+    <%= link_to task_subtask_path(task, st), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "me-2" do %>
+      <i class="fa-solid fa-square-xmark text-danger fs-4"></i>
+    <% end %>
+  </div>
+<% end %>
