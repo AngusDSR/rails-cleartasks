@@ -12,14 +12,22 @@ div.div-subtask {
 
 .sub-task-item {
   height: 2.2rem;
-  padding: 0.4rem;
+  display: flex;
+  align-items: center;
   background-color: $gray;
-  color: $light-gray;
   border-radius: 6px;
   font-size: 0.8rem;
   font-family: Raleway;
 }
 
+p.new-subtask-text {
+  margin: 0;
+  margin-left: 0.8rem;
+  font-size: 0.8rem;
+  color: $light-gray;
+}
+
+// those subtasks seen in the task show pane
 p.subtask-text {
   margin: 0;
   font-size: 0.8rem;
