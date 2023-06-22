@@ -1,7 +1,23 @@
+.subtask-input {
+  height: 2.2rem;
+  font-style: italic;
+  color: #404040;
+}
+
 div.div-subtask {
   margin-bottom: 4px;
   height: 3rem;
   border-radius: 8px;
+}
+
+.sub-task-item {
+  height: 2.2rem;
+  padding: 0.4rem;
+  background-color: $gray;
+  color: $light-gray;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: Raleway;
 }
 
 p.subtask-text {

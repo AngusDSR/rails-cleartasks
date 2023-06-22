@@ -38,7 +38,6 @@ noteTitles.forEach((title) => {
 
 CloseUpdateTaskBtns.forEach((btn) => {
   btn.addEventListener("click", function(e) {
-    console.log('line 50')
     btn.parentElement.style.display = "none";
     btn.parentElement.previousElementSibling.style.display = "block";
   });

@@ -13,7 +13,7 @@
         </div>
       <% end %>
       <div class="input-group my-3">
-        <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control border-0", data: { 'subtask-target': 'content' } %>
+        <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control border-0 subtask-input", data: { 'subtask-target': 'content' } %>
         <%= button_tag(type: 'submit', class: "btn btn-sm btn-light btn-new-subtask m-0 p-1 fs-1") do %>
           <i class="fa-solid fa-plus"></i>
         <% end %>
