@@ -1,10 +1,17 @@
 <div class="update-form d-flex">
-  <li class="container-note-info">
-    <p class="note-info note-title"><%= task.content.slice(0, 80) %></p>
+  <li class="container-note-info" id="<%= index %>"
+   data-action="click->toggle-notes#toggleNoteDetails" data-toggle-notes-target="noteTitle">
+    <p class="note-info note-title">
+      <%= task.content.slice(0, 80) %>
+    </p>
     <%# DAYS SINCE SAVED %>
-    <p class="note-info note-number"><%= (Date.today - task.created_at.to_date).to_i %> </p>
+    <p class="note-info note-number">
+      <%= (Date.today - task.created_at.to_date).to_i %>
+    </p>
     <%# # OF LINES %>
-    <p class="note-info note-number"><%= task.content.lines.size %></p>
+    <p class="note-info note-number">
+      <%= task.content.lines.size %>
+    </p>
   </li>
-  <%= render "tasks/task_details_form", {task:task} %>
+  <%= render "tasks/task_details_form", {task:task, index:index} %>
 </div>

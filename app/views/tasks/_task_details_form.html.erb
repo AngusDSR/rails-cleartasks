@@ -1,48 +1,50 @@
-<div class="update-task">
-    <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
-      <div class="row mb-0">
-        <div class="col-md-6">
-          <%= f.input :name, required: true,  placeholder: "Task name: I have to...", grid_wrapper_html: { class: "flex-grow-1" } %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :reason, required: true,  placeholder: 'Because/in time for...', grid_wrapper_html: { class: "flex-grow-1" } %>
-        </div>
-        <div class="col-md-3">
-          <%= f.input :due_date, html5: true, min: Date.today.to_s, input_html: { class: 'note-details' } %>
-        </div>
+<div class="update-task hidden" data-toggle-notes-target="noteDetails">
+  <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
+    <div class="row mb-0">
+      <div class="col-md-6">
+        <%= f.input :name, required: true,  placeholder: "Task name: I have to...", grid_wrapper_html: { class: "flex-grow-1" } %>
       </div>
-      <div class="row my-2">
-        <div class="col-md-6" data-controller="importance">
+      <div class="col-md-3">
+        <%= f.input :reason, required: true,  placeholder: 'Because/in time for...', grid_wrapper_html: { class: "flex-grow-1" } %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :due_date, html5: true, min: Date.today.to_s, input_html: { class: 'note-details' } %>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-md-6">
+        <div data-controller="importance">
           <label class="integer optional form-label text-light mt-1 mb-0 p-0" for="task_importance">
             Importance: <span data-importance-target="span"></span>
           </label>
           <%= f.input :importance, as: :range, input_html: { data: { action: "input->importance#changeImportance", "importance-target": "slider" }, min: '0', max: '5' } %>
           <%= f.input :content, input_html: { rows: 5 }, grid_wrapper_html: { class: "flex-grow-1 mb-2" } %>
+        </div>
         <div class="w-100">
           <%# buttons %>
           <div class="d-flex flex-row-reverse">
+            <%# Save %>
             <%= button_tag(type: 'submit', class: "btn btn-sm btn-light me-2") do %>
-              <%# Save %>
               <i class="fa-solid fa-floppy-disk"></i>
             <% end %>
             <%# TO DO: summary modal %>
+            <%# Delete note %>
             <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
-                <%# Delete note %>
-                <i class="fa-regular fa-trash-can"></i>
+              <i class="fa-regular fa-trash-can"></i>
             <% end %>
-            <button class="btn btn-sm btn-light me-2 btn-close-task-update">
+            <%# Close %>
+            <button class="btn btn-sm btn-light me-2" id ="<%= index %>"
+              data-toggle-notes-target="closeNoteBtn" data-action="click->toggle-notes#toggleNoteDetails">
               <i class="fa-solid fa-chevron-up"></i>
             </button>
           </div>
         </div>
       </div>
-    <% end %>
-        <div class="col-md-6">
-          <div>
-            <%= render "new_subtask", {task:task} %>
-            <%= render "show_subtasks", {task:task} %>
-          </div>
-        </div>
+  <% end %>
+      <div class="col-md-6">
+        <%= render "new_subtask", {task:task} %>
+        <%= render "show_subtasks", {task:task} %>
       </div>
-    <hr>
-  </div>
+    </div>
+  <%# End is on line 43 to prevent form nesting %>
+</div>

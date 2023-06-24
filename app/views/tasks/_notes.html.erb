@@ -3,9 +3,9 @@
   <p class="no-notes">No notes - you're on top of things 👍</p>
   <hr>
 <% else %>
-  <ul class="list-notes">
-    <% new_tasks.each do |task| %>
-      <%= render "tasks/add_task_details", {task:task} %>
+  <ul class="list-notes" data-controller="toggle-notes">
+    <% new_tasks.each_with_index do |task, index| %>
+      <%= render "tasks/add_task_details", {task:task, index:index} %>
     <% end %>
   </ul>
 <% end %>
