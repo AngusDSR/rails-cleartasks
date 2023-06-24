@@ -21,3 +21,6 @@ application.register("subtask", SubtaskController)
 
 import SubtaskDeleteController from "./subtask_delete_controller"
 application.register("subtask-delete", SubtaskDeleteController)
+
+import ToggleNotesController from "./toggle_notes_controller"
+application.register("toggle-notes", ToggleNotesController)

@@ -1,5 +1,18 @@
 // Specific CSS for your home-page
-.view-task, .update-task {
-  display: none;
+.update-task {
   width: 100%;
+  height: auto;
 }
+
+.hidden {
+  height: 0 !important;
+  width: 0 !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+}
+
+// .vertical-line {
+//   height: 10rem;
+//   margin: 10% 7% 0 0;
+//   border-left: solid 1px $light-gray;
+// }

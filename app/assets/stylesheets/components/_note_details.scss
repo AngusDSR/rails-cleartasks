@@ -41,8 +41,16 @@
 
 .note-details {
   resize: none;
+  font-style: italic;
+
   &::placeholder {
     font-weight: 600;
+    color: #404040;
+  }
+
+  &[type="date"] {
+    font-weight: 600;
+    color: #404040;
   }
 }
 
@@ -59,13 +67,4 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #fff;
     transform: scale(1.1);
   }
-}
-
-.sub-task-item {
-  padding: 0.4rem;
-  background-color: $gray;
-  color: $light-gray;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-family: roboto;
 }

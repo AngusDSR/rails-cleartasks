@@ -5,11 +5,6 @@ import "bootstrap"
 
 // move this to separate file and import
 const newNoteForm = document.getElementById('new_task');
-const noteTextarea = newNoteForm.lastChild;
-const noteTitles = document.querySelectorAll('.note-title');
-// const tasks = document.querySelectorAll('.note-title');
-// const closeTaskBtn = document.querySelectorAll('.btn-close');
-const CloseUpdateTaskBtns = document.querySelectorAll('.btn-close-task-update');
 
 // Submit form and save notes
 window.addEventListener('keydown', function(e) {
@@ -17,29 +12,4 @@ window.addEventListener('keydown', function(e) {
       e.preventDefault();
       newNoteForm.submit();
   }
-});
-
-// Show form to add task details to new notes
-noteTitles.forEach((title) => {
-  title.addEventListener("click", function(e) {
-    title.parentElement.style.display = "none";
-    title.parentElement.nextElementSibling.style.display = "block";
-  });
-});
-
-// Hide task details
-// closeTaskBtn.forEach((task) => {
-//   task.addEventListener("click", function(e) {
-//     // HIDE TASKS
-//     console.log('line 42')
-//   });
-// });
-
-
-CloseUpdateTaskBtns.forEach((btn) => {
-  btn.addEventListener("click", function(e) {
-    console.log('line 50')
-    btn.parentElement.style.display = "none";
-    btn.parentElement.previousElementSibling.style.display = "block";
-  });
 });
