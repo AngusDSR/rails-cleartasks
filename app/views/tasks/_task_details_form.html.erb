@@ -18,31 +18,31 @@
           </label>
           <%= f.input :importance, as: :range, input_html: { data: { action: "input->importance#changeImportance", "importance-target": "slider" }, min: '0', max: '5' } %>
           <%= f.input :content, input_html: { rows: 5 }, grid_wrapper_html: { class: "flex-grow-1 mb-2" } %>
+        <div class="w-100">
+          <%# buttons %>
+          <div class="d-flex flex-row-reverse">
+            <%= button_tag(type: 'submit', class: "btn btn-sm btn-light me-2") do %>
+              <%# Save %>
+              <i class="fa-solid fa-floppy-disk"></i>
+            <% end %>
+            <%# TO DO: summary modal %>
+            <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
+                <%# Delete note %>
+                <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+            <button class="btn btn-sm btn-light me-2 btn-close-task-update">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+          </div>
+        </div>
         </div>
     <% end %>
         <div class="col-md-6">
           <div>
-            <%# new subtask form %>
             <%= render "new_subtask", {task:task} %>
-            <%# view subtasks %>
             <%= render "show_subtasks", {task:task} %>
           </div>
         </div>
-      </div>
-      <%# buttons %>
-      <div class="d-flex flex-row-reverse">
-         <%= button_tag(type: 'submit', class: "btn btn-sm btn-light me-2") do %>
-          <%# Save %>
-          <i class="fa-solid fa-floppy-disk"></i>
-        <% end %>
-        <%# TO DO: summary modal %>
-        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
-            <%# Delete note %>
-            <i class="fa-regular fa-trash-can"></i>
-        <% end %>
-        <button class="btn btn-sm btn-light me-2 btn-close-task-update">
-          <i class="fa-solid fa-chevron-up"></i>
-        </button>
       </div>
     <hr>
   </div>
