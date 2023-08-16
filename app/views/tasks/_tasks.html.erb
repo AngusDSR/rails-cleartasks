@@ -6,15 +6,15 @@
   <div class="accordion bg-transparent" id="accordionTasks">
     <% @tasks.each_with_index do |task, index| %>
       <div class="accordion-item border-0">
-        <h2 class="mb-0" id="heading<%= index %>">
+        <h2 class="accordion-header mb-0" id="heading<%= index %>">
           <button
             <%# bootstrap %>
-            class="task-name accordion-button collapsed" type="button" id="<%= index %>"
+            class="accordion-button task-name" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>"
             <%# Stimulus %>
-            data-action="click->hide-task-tabs#highlightCurrentTask"
-            data-hide-task-tabs-target="taskTabButton">
-            <%= task.name %>
+            <%# data-action="click->hide-task-tabs#highlightCurrentTask" %>
+            <%# data-hide-task-tabs-target="taskTabButton"> %>
+            ><%= task.name %>
           </button>
         </h2>
         <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
@@ -52,19 +52,17 @@
               <hr>
             </div>
             <div class="task-buttons">
-              <button>Add subtask</button>
+              <p class="btn btn-sm btn-light">Add subtask</p>
               <%= link_to "Edit", edit_task_path(task), class:"btn btn-sm btn-light me-2" %>
               <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed note, are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
                 <i class="fa-regular fa-trash-can"></i>
                 Delete note
               <% end %>
-              <%= link_to "See original note", edit_task_path(task), class:"btn btn-sm btn-light me-2" %>
-
-              <button>See original note</button>
+              <p class="btn btn-sm btn-light">See original note</p>
               <hr>
               <button>Priority</button>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     <% end %>

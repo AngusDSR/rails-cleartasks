@@ -5,7 +5,9 @@
 </div>
 
 <%# New tasks entered as rough notes %>
-<div class="container-notes-col">
+<div class="container-notes-col"
+  data-controller="new-note-form-submit"
+>
   <%= render "tasks/new_notes", new_task: @new_task %>
 
   <%# Notes that need details from user %>

@@ -1,5 +1,5 @@
 <div class="container-notes-new">
-  <%= simple_form_for new_task, html: { class: "form-new-notes bg-black m-0", autocomplete: "off" } do |f| %>
+  <%= simple_form_for new_task, html: { class: "form-new-notes bg-black m-0", autocomplete: "off",  data: { 'new-note-form-submit-target': 'form' } } do |f| %>
     <%= f.input :content,
       required: true, label: false, wrapper: false,
       input_html: { class: 'input-notes bg-black', placeholder: 'Add your notes here...' }

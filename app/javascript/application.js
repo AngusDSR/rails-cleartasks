@@ -8,8 +8,8 @@ const newNoteForm = document.getElementById('new_task');
 
 // Submit form and save notes
 window.addEventListener('keydown', function(e) {
+  e.preventDefault();
     if (e.key === 'Enter' && e.ctrlKey) {
-      e.preventDefault();
       newNoteForm.submit();
   }
 });
