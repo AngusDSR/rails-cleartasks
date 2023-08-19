@@ -36,8 +36,8 @@
                       </p>
                       <div class="flex-grow-1"></div>
                       <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, style: 'display: none;', checked: st.completion %>
-                      <div class="subtaskCheckIconDiv" id="<%= index %>"
-                      data-mark-subtask-complete-target="iconSubtaskCompletion" data-action="click->mark-subtask-complete#toggleCompletion">
+                      <div class="subtaskCheckIconDiv" id="<%= index %>"  data-mark-subtask-complete-target="iconSubtaskCompletion"
+                                                                            data-action="click->mark-subtask-complete#toggleCompletion">
                         <% if st.completion %>
                           <i class="fa-solid fa-square subtask-checker"></i>
                         <% else %>
@@ -47,24 +47,24 @@
                     <% end %>
                   </div>
                 <% end %>
-                <p>button for complete whole task: progress bar for all subtasks</p>
-              </div>
+                <div class="div-subtask flex-row d-flex bg-gray" style="width: 100%;padding: 0.6rem;padding-left: 0.4rem;display:
+                                                                        flex;align-items: center;align-items: center;">
+                  <p for="check-all" class="subtask-text" >All completed</p>
+                  <div class="flex-grow-1"></div>
+                  <input id="check-all" type="checkbox" class="" style="display:none;" data-mark-subtask-complete-target="checkAllIcon" >
+                  <div class="subtaskCheckIconDiv" data-mark-subtask-complete-target="completedAll"
+                                                   data-action="click->mark-subtask-complete#toggleCompletionAll">
+                    <% if task.subtasks.all?(&:completion) %>
+                      <i class="fa-solid fa-check-square subtask-checker"></i>
+                    <% else %>
+                      <i class="fa-regular fa fa-square subtask-checker"></i>
+                    <% end %>
+                  </div>
+                </div>
+                </div>
               <hr>
             </div>
-            <div class="task-buttons">
-              <button>Add subtask</button>
-              <%= link_to "Edit", edit_task_path(task), class:"btn btn-sm btn-light me-2" %>
-              <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed note, are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
-                <i class="fa-regular fa-trash-can"></i>
-                Delete note
-              <% end %>
-              <%= link_to "See original note", edit_task_path(task), class:"btn btn-sm btn-light me-2" %>
-
-              <button>See original note</button>
-              <hr>
-              <button>Priority</button>
-            </div>
-        </div>
+          </div>
         </div>
       </div>
     <% end %>
