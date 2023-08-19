@@ -6,15 +6,15 @@
   <div class="accordion bg-transparent" id="accordionTasks">
     <% @tasks.each_with_index do |task, index| %>
       <div class="accordion-item border-0">
-        <h2 class="mb-0" id="heading<%= index %>">
+        <h2 class="accordion-header mb-0" id="heading<%= index %>">
           <button
             <%# bootstrap %>
-            class="task-name accordion-button collapsed" type="button" id="<%= index %>"
+            class="accordion-button task-name" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>"
             <%# Stimulus %>
-            data-action="click->hide-task-tabs#highlightCurrentTask"
-            data-hide-task-tabs-target="taskTabButton">
-            <%= task.name %>
+            <%# data-action="click->hide-task-tabs#highlightCurrentTask" %>
+            <%# data-hide-task-tabs-target="taskTabButton"> %>
+            ><%= task.name %>
           </button>
         </h2>
         <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
@@ -61,7 +61,7 @@
                     <% end %>
                   </div>
                 </div>
-                </div>
+               </div>
               <hr>
             </div>
           </div>

@@ -16,6 +16,9 @@ application.register("importance", ImportanceController)
 import MarkSubtaskCompleteController from "./mark_subtask_complete_controller"
 application.register("mark-subtask-complete", MarkSubtaskCompleteController)
 
+import NewNoteFormSubmitController from "./new_note_form_submit_controller"
+application.register("new-note-form-submit", NewNoteFormSubmitController)
+
 import SubtaskController from "./subtask_controller"
 application.register("subtask", SubtaskController)
 
