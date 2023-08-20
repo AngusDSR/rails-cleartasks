@@ -4,7 +4,8 @@
   <hr>
 <% else %>
   <div class="accordion bg-transparent" id="accordionTasks">
-    <% @tasks.each_with_index do |task, index| %>
+  <%# raise %>
+    <% @tasks.sort_by { |task| -task.priority }.each_with_index do |task, index| %>
       <div class="accordion-item border-0">
         <h2 class="accordion-header mb-0" id="heading<%= index %>">
           <button
