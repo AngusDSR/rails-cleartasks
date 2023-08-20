@@ -1,5 +1,8 @@
 <div class="update-task hidden" data-toggle-notes-target="noteDetails">
   <%= simple_form_for task, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, defaults: { input_html: { class: "note-details" }, label: false } do |f| %>
+    <%# Hidden field for dynamic page rendering for errors %>
+    <%= f.hidden_field :source_path, value: request.fullpath %>
+
     <div class="row mb-0">
       <div class="col-md-6">
         <%= f.input :name, required: true,  placeholder: "Task name: I have to...", grid_wrapper_html: { class: "flex-grow-1" } %>
@@ -23,15 +26,18 @@
         <div class="w-100">
           <%# buttons %>
           <div class="d-flex flex-row-reverse">
+
             <%# Save %>
             <%= button_tag(type: 'submit', class: "btn btn-sm btn-light me-2") do %>
               <i class="fa-solid fa-floppy-disk"></i>
             <% end %>
             <%# TO DO: summary modal %>
+
             <%# Delete note %>
             <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
               <i class="fa-regular fa-trash-can"></i>
             <% end %>
+
             <%# Close %>
             <button class="w-100 me-2 btn btn-sm btn-light" id ="<%= index %>"
               data-toggle-notes-target="closeNoteBtn" data-action="click->toggle-notes#toggleNoteDetails">

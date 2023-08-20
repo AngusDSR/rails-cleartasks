@@ -8,6 +8,5 @@ export default class extends Controller {
 
   changeImportance(e) {
     this.spanTarget.innerHTML = this.sliderTarget.value;
-    console.dir(this.spanTarget.style);
   }
 }

@@ -14,7 +14,11 @@
             <%# Stimulus %>
             <%# data-action="click->hide-task-tabs#highlightCurrentTask" %>
             <%# data-hide-task-tabs-target="taskTabButton"> %>
-            ><%= task.name %>
+            >
+            <h3 class="task-name-text">
+              <%= task.name %>:
+              <%= task.priority %>
+            </h3>
           </button>
         </h2>
         <div id="collapse<%= index %>" class="accordion-collapse collapse border-bottom" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionTasks">
@@ -37,7 +41,7 @@
                       <div class="flex-grow-1"></div>
                       <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, style: 'display: none;', checked: st.completion %>
                       <div class="subtaskCheckIconDiv" id="<%= index %>"  data-mark-subtask-complete-target="iconSubtaskCompletion"
-                                                                            data-action="click->mark-subtask-complete#toggleCompletion">
+                       data-action="click->mark-subtask-complete#toggleCompletion">
                         <% if st.completion %>
                           <i class="fa-solid fa-square subtask-checker"></i>
                         <% else %>
@@ -48,12 +52,12 @@
                   </div>
                 <% end %>
                 <div class="div-subtask flex-row d-flex bg-gray" style="width: 100%;padding: 0.6rem;padding-left: 0.4rem;display:
-                                                                        flex;align-items: center;align-items: center;">
+                  flex;align-items: center;align-items: center;">
                   <p for="check-all" class="subtask-text" >All completed</p>
                   <div class="flex-grow-1"></div>
                   <input id="check-all" type="checkbox" class="" style="display:none;" data-mark-subtask-complete-target="checkAllIcon" >
                   <div class="subtaskCheckIconDiv" data-mark-subtask-complete-target="completedAll"
-                                                   data-action="click->mark-subtask-complete#toggleCompletionAll">
+                    data-action="click->mark-subtask-complete#toggleCompletionAll">
                     <% if task.subtasks.all?(&:completion) %>
                       <i class="fa-solid fa-check-square subtask-checker"></i>
                     <% else %>
@@ -63,6 +67,17 @@
                 </div>
                </div>
               <hr>
+              <%# buttons to edit, view original note and add subtasks %>
+              <div class="task-buttons">
+                <p class="btn btn-sm btn-light">Add subtask</p>
+                <%= link_to "Edit", edit_task_path(task), class:"btn btn-sm btn-light me-2" %>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed note, are you sure?' }, class:"btn btn-sm btn-danger me-2" do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                  Delete note
+                <% end %>
+                <p class="btn btn-sm btn-light">See original note</p>
+                <hr>
+              </div>
             </div>
           </div>
         </div>

@@ -3,9 +3,10 @@ class Task < ApplicationRecord
 
   # callbacks
   after_initialize :set_task_content_original
+  before_save :set_priority
   after_commit :update_task_log
   validates :content, presence: true, length: { in: 10..150 }
-  validates :importance, numericality: { less_than: 4 }
+  validates :importance, numericality: { less_than: 6, greater_than: 0 }
   validate :due_date_must_be_in_future
 
   private
@@ -22,7 +23,22 @@ class Task < ApplicationRecord
     errors.add(:due_date, "can't be in the past") unless due_date >= Date.today
   end
 
+  def set_priority
+    # set priority based on due date and count of subtasks
+    puts priority
+    puts " ****** SETTING PRIORITY ****** "
+    puts " ****** Setting priority ****** "
+    puts " ****** Setting priority ****** "
+    puts " ****** Setting priority ****** "
+    time_factor = due_date ? 1.0 / (due_date - Date.today).to_i : 1
+
+    self.priority = (subtasks.count + 1) * importance * time_factor
+    puts " ****** st COUNT: #{subtasks.count + 1}  IMPORTANCE: #{importance} * TIME:#{time_factor}} ****** "
+    puts " ****** priority: #{priority} ****** "
+  end
+
   def update_task_log
+    puts " ****** UPDATE TASK LOG ****** "
     subtasks = []
     File.open(Rails.public_path.join('task_log.txt'), 'w') do |file|
       Task.all.order('due_date DESC, importance').each do |record|
