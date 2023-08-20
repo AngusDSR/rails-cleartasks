@@ -16,19 +16,18 @@ class TasksController < ApplicationController
 
   def edit
     # TO DO: Create modal, note view
-    # raise
     @task = Task.find(params[:id])
     @subtask = Subtask.new
   end
 
   def update
     @task = Task.find(params[:id])
-    if @task.update(task_params)
-      # redirect_to root_path
+    if @task.update(task_params.except("source_path"))
       redirect_to root_path
-      # render :index, status: :unprocessable_entity, locals: { hide_container_main: true }
     else
-      render :edit, status: :unprocessable_entity
+      unless params[:task]["source_path"] == "/"
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -44,7 +43,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :name, :reason, :due_date, :importance, :completion)
+    params.require(:task).permit(:content, :name, :reason, :due_date, :importance, :completion, :source_path)
   end
 
   def subtask_params

@@ -3,15 +3,16 @@ class Task < ApplicationRecord
 
   # callbacks
   after_initialize :set_task_content_original
+  before_save :set_priority
   after_commit :update_task_log
   validates :content, presence: true, length: { in: 10..150 }
-  validates :importance, numericality: { less_than: 4 }
+  validates :importance, inclusion: { in: 1..5 }
   validate :due_date_must_be_in_future
 
   private
 
   def set_task_content_original
-    # take a copy of the original task content - in case we change it with GPT
+    # take a copy of the original task content
     self.content_original = content
   end
 
@@ -22,7 +23,16 @@ class Task < ApplicationRecord
     errors.add(:due_date, "can't be in the past") unless due_date >= Date.today
   end
 
+  def set_priority
+    # set priority based on due date and count of subtasks
+    puts " ****** SETTING PRIORITY ****** "
+    time_factor = due_date ? 30 / (due_date - Date.today).to_i : 1
+    self.priority = (subtasks.count + 1) * importance * time_factor
+    puts " ****** priority: #{priority.class} ****** "
+  end
+
   def update_task_log
+    puts " ****** UPDATE TASK LOG ****** "
     subtasks = []
     File.open(Rails.public_path.join('task_log.txt'), 'w') do |file|
       Task.all.order('due_date DESC, importance').each do |record|

@@ -84,4 +84,15 @@ p.subtask-text {
 i.subtask-checker {
   font-size: 1.5rem;
   opacity: 50%;
+  &:hover {
+    opacity: 90%;
+  }
+}
+
+.all-subtasks-checker {
+  font-size: 1.5rem;
+  opacity: 50%;
+  &:hover {
+    opacity: 90%;
+  }
 }

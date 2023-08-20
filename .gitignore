@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/public/task_log.txt
+
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*

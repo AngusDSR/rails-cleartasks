@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.text :content
       t.string :name
       t.date :due_date
-      t.integer :importance, default: 0
+      t.integer :importance, default: 1
       t.string :reason
       t.boolean :completion, default: false
       t.text :content_original

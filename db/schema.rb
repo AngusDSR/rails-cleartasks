@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_12_171110) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_112309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,12 +27,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_171110) do
     t.text "content"
     t.string "name"
     t.date "due_date"
-    t.integer "importance", default: 0
+    t.integer "importance", default: 1
     t.string "reason"
     t.boolean "completion", default: false
     t.text "content_original"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "priority"
   end
 
   add_foreign_key "subtasks", "tasks"
