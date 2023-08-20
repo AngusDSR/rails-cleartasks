@@ -1,3 +1,8 @@
+.task-buttons {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
 .btn-new-subtask {
   height: 2.2rem;
   display: flex;
@@ -14,4 +19,15 @@
     font-size: 1.8rem;
     margin-right: 18%;
   }
+}
+
+.see-note-button {
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: small;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.8px;
 }

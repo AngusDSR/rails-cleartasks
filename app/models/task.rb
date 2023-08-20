@@ -12,7 +12,7 @@ class Task < ApplicationRecord
   private
 
   def set_task_content_original
-    # take a copy of the original task content - in case we change it with GPT
+    # take a copy of the original task content
     self.content_original = content
   end
 
