@@ -5,6 +5,9 @@ class Task < ApplicationRecord
   after_initialize :set_task_content_original
   before_save :set_priority
   after_commit :update_task_log
+  # TO DO: complete all subtaks makes task complete
+
+  # validations
   validates :content, presence: true, length: { in: 10..150 }
   validates :importance, inclusion: { in: 1..5 }
   validate :due_date_must_be_in_future
@@ -25,14 +28,11 @@ class Task < ApplicationRecord
 
   def set_priority
     # set priority based on due date and count of subtasks
-    puts " ****** SETTING PRIORITY ****** "
     time_factor = due_date ? 30 / (due_date - Date.today).to_i : 1
     self.priority = (subtasks.count + 1) * importance * time_factor
-    puts " ****** priority: #{priority.class} ****** "
   end
 
   def update_task_log
-    puts " ****** UPDATE TASK LOG ****** "
     subtasks = []
     File.open(Rails.public_path.join('task_log.txt'), 'w') do |file|
       Task.all.order('due_date DESC, importance').each do |record|
