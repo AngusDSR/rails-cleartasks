@@ -95,30 +95,6 @@ export default class extends Controller {
     }
   }
 
-  submitForms(e) {
-    const checkbox = e.currentTarget; // The clicked checkbox
-    const form = checkbox.closest("[data-mark-subtask-complete-target='subtaskCheckboxForm']"); // Find the closest form element
-    const formData = new FormData(form);
-
-    fetch(form.getAttribute("action"), {
-      method: form.getAttribute("method"),
-      body: formData,
-      headers: {
-        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content"),
-      },
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        // console.log("Subtask saved successfully.");
-      } else {
-        console.error("Failed to save subtask.", data.errors);
-      }
-    })
-    .catch(error => {
-      // Handle network error
-    });
-  }
 
 
 }
