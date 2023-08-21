@@ -64,7 +64,7 @@ export default class extends Controller {
     // default icon
     const checkAllIcon = this.checkAllIconTarget;
 
-    let complete = true;
+    // let complete = true;
 
 
     checkboxes.forEach((checkbox) => {
@@ -89,7 +89,7 @@ export default class extends Controller {
 
     // Update the checkAllIcon based on `complete` value
     if (allChecked) {
-      checkAllIcon.innerHTML = '<i class="fa-solid fa-check-square subtask-checker"></i>';
+      checkAllIcon.innerHTML = '<i class="fa-solid fa-square subtask-checker"></i>';
     } else {
       checkAllIcon.innerHTML = '<i class="fa-regular fa fa-square subtask-checker"></i>';
     }
