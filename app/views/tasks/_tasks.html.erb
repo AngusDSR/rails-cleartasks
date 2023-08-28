@@ -82,13 +82,13 @@
               <hr>
               <%# buttons to edit, view original note and add subtasks %>
               <div class="task-buttons">
-                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed task, are you sure?' }, class:"task-btn btn btn-outline-danger me-2 fw-bold" do %>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Deleting detailed task, are you sure?' }, class:" btn btn-outline-danger me-2 fw-bold" do %>
                   Delete
                 <% end %>
                 <%= link_to edit_task_path(task), class:"task-btn btn btn-outline-light me-2 fw-bold" do %>
                   Edit
                 <% end %>
-                <%= link_to mark_complete_task_path(task), data: { turbo_method: :patch, turbo_confirm: 'Complete task?' }, class: " task-btn btn btn-success  fw-bold" do %>
+                <%= link_to mark_complete_task_path(task), data: { turbo_method: :patch, turbo_confirm: 'Complete task?' }, class: " btn btn-success  fw-bold" do %>
                   Done!
                 <% end %>
               </div>
