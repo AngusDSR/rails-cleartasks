@@ -31,6 +31,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def mark_complete
+    @task = Task.find(params[:id])
+    @task.update(completion: true)
+    # redirect_to @task, notice: 'Task marked as complete.'
+  end
+
   def destroy
     @task = Task.find(params[:id])
     if @task.destroy

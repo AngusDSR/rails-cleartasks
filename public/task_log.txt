@@ -1,8 +1,8 @@
 , , by 
 , , by 
 , , by 
-Fix the complete all button, it doesn't work, by 2023-09-04
 Add subtask hover effect, you can't read it otherwise, by 2023-09-04
 Fix task priortisation display, It's shit, by 2023-09-04
+Fix the complete all button, it doesn't work, by 2023-09-04
 Restyle the task view, it's messy, by 2023-09-04
 Utilise dynamic partial rendering, so it's a smoother interface, by 2023-09-04

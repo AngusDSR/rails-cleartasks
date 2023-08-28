@@ -61,7 +61,7 @@
                   <div class="subtasks-all-complete-button"
                     data-action="click->mark-subtask-complete#toggleCompletionAll"
                   >
-                    <p class="fw-bold text-center">Mark all complete</p>
+                    <p class="fw-bold text-center">Toggle all</p>
                     <input id="check-all-<%= index %>"
                       style="display:none;"
                       type="checkbox"
@@ -80,13 +80,17 @@
               <hr>
               <%# buttons to edit, view original note and add subtasks %>
               <div class="task-buttons">
-                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed note, are you sure?' }, class:"btn btn-sm btn-danger me-2 fw-bold" do %>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: '#Deleting detailed task, are you sure?' }, class:"btn btn-sm task-btn btn-danger me-2 fw-bold" do %>
                   <i class="fa-regular fa-trash-can"></i>
                   Delete
                 <% end %>
-                <%= link_to edit_task_path(task), class:"btn btn-sm btn-light me-2 fw-bold" do %>
+                <%= link_to edit_task_path(task), class:"btn btn-sm task-btn btn-light me-2 fw-bold" do %>
                   <i class="fa-solid fa-pen-to-square"></i>
                   Edit
+                <% end %>
+                <%= link_to mark_complete_task_path(task), data: { turbo_method: :patch, turbo_confirm: 'Complete task?' }, class: "btn btn-sm task-btn btn-success fw-bold" do %>
+                  <i class="fa-regular fa-check-square"></i>
+                  Mark Complete
                 <% end %>
               </div>
               <hr>
