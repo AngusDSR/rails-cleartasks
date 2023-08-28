@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   # TO DO: complete all subtaks makes task complete
 
   # validations
-  validates :content, presence: true, length: { in: 10..150 }
+  validates :content, presence: true, length: { in: 10..1500 }
   validates :importance, inclusion: { in: 1..5 }
   validate :due_date_must_be_in_future
 
