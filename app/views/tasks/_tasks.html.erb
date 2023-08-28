@@ -60,11 +60,9 @@
                   <div class="subtaskCheckIconDiv" data-mark-subtask-complete-target="completedAll"
                     data-action="click->mark-subtask-complete#toggleCompletionAll">
                     <% if task.subtasks.all?(&:completion) %>
-                      <i class="fa-solid fa-square-check all-subtasks-checker"></i>
-                      <%# <i class="fa-solid fa-check-square subtask-checker"></i> %>
+                      <i class="fa-solid fa-check-square subtask-checker"></i>
                     <% else %>
                       <i class="fa-regular fa-square-check all-subtasks-checker"></i>
-                      <%# <i class="fa-regular fa fa-square subtask-checker"></i> %>
                     <% end %>
                   </div>
                 </div>
