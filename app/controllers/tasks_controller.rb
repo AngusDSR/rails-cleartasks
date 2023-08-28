@@ -8,6 +8,10 @@ class TasksController < ApplicationController
     @subtask = Subtask.new
   end
 
+  def completed
+    @tasks = Task.where(completion: true)
+  end
+
   def create
     @task = Task.new(task_params)
     flash[:error] = "Enter at least 10 characters" unless @task.content.present? && @task.save

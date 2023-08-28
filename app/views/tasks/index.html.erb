@@ -5,10 +5,10 @@
   </h2>
 
   <%# See completed tasks button %>
-  <button class="see-completed-collapsed" aria-label="See completed tasks">
+  <%= link_to completed_tasks_path, class: "see-completed-collapsed", aria: { label: "See completed tasks" } do %>
     <p class="text-hidden">See completed tasks</p>
     <i class="fa-solid fa-chevron-down"></i>
-  </button>
+  <% end %>
 
   <%= render "tasks/tasks", tasks: @tasks %>
 </div>
