@@ -1,6 +1,7 @@
 .task-buttons {
-  display: flex;
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .btn-new-subtask {
@@ -30,4 +31,43 @@
   font-weight: 500;
   text-decoration: underline;
   letter-spacing: 0.8px;
+}
+
+.task-btn {
+  width: 30%;
+  font-size: 0.9rem;
+}
+
+.subtasks-all-complete-button {
+  width: 50%;
+  height: 2.4rem;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: grey;
+  margin-top: 3px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  * {
+    margin: 0;
+    color: #000;
+    opacity: 70%;
+  }
+
+  &:hover {
+    background: #d6dee1;
+
+    * {
+      font-weight: bold;
+      opacity: 100%;
+
+    }
+  }
 }
