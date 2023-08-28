@@ -5,6 +5,7 @@ class TasksController < ApplicationController
                      .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
     @tasks = Task.where.not(name: ['', nil], due_date: ['', nil], reason: ['', nil])
+                 .where(completion: false).order(priority: :desc)
     @subtask = Subtask.new
   end
 
@@ -37,8 +38,7 @@ class TasksController < ApplicationController
 
   def mark_complete
     @task = Task.find(params[:id])
-    @task.update(completion: true)
-    # redirect_to @task, notice: 'Task marked as complete.'
+    redirect_to root_path if @task.update(completion: true)
   end
 
   def destroy
