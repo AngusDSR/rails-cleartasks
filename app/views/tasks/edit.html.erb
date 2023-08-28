@@ -1,13 +1,21 @@
 <div class="container m-4">
   <div class="d-flex justify-content-between">
-    <h4>Edit task</h4>
-    <%= link_to :root do %>
-      <i class="fa-solid fa-rectangle-xmark fs-2"></i>
-    <% end %>
+    <h2>
+      <%= link_to :root, class: "text-decoration-none" do %>
+        <i class="fa-solid fa-circle-left"></i>
+      <% end %>
+      <strong>
+        Edit task:
+      </strong>
+      <%= @task.name %>
+    </h2>
   </div>
+  <hr>
   <%# DISPLAY SUBTASKS %>
+
+
   <div>
-    <%= render "show_subtasks", {task:@task} %>
+    <%= render "show_subtasks", {task:@task} if @task.subtasks.present? %>
     <%= render "new_subtask", {task:@task} %>
   </div>
   <%= simple_form_for @task do |f| %>
@@ -28,7 +36,7 @@
     <hr>
     <%= f.label :importance, class: 'form-label' %>
     <label class="integer optional form-label text-light mt-1 mb-0 p-0" for="task_importance">
-      Importance: <span data-importance-target="span">1</span>
+      <span data-importance-target="span">1</span>
     </label>
     <%= f.input :importance, as: :range, input_html: { min: '1', max: '5' }, label: false %>
     <hr>

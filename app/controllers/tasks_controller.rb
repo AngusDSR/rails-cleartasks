@@ -5,7 +5,12 @@ class TasksController < ApplicationController
                      .or(Task.where.not(content: nil).where(due_date: [nil, ''])).order(created_at: :desc)
                      .or(Task.where.not(content: nil).where(name: [nil, ''])).order(created_at: :desc)
     @tasks = Task.where.not(name: ['', nil], due_date: ['', nil], reason: ['', nil])
+                 .where(completion: false).order(priority: :desc)
     @subtask = Subtask.new
+  end
+
+  def completed
+    @tasks = Task.where(completion: true)
   end
 
   def create
@@ -29,6 +34,11 @@ class TasksController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     end
+  end
+
+  def mark_complete
+    @task = Task.find(params[:id])
+    redirect_to root_path if @task.update(completion: true)
   end
 
   def destroy

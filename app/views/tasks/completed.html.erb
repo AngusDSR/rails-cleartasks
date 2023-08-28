@@ -1,0 +1,56 @@
+<div class="container m-4">
+  <div class="d-flex justify-content-between">
+    <h2>
+      <%= link_to :root, class: "text-decoration-none" do %>
+        <i class="fa-solid fa-circle-left"></i>
+      <% end %>
+      <strong>Completed tasks</strong>
+    </h2>
+  </div>
+  <hr>
+  <div>
+    <div class="container">
+      <% @tasks.each do |task| %>
+        <h5>
+        <%= task.name %>:
+        </h5>
+        <small>
+          <% difference = calculate_time_difference(task.created_at, task.updated_at) %>
+          Days: <%= difference[:days] %>, Hours: <%= difference[:hours] %>, Minutes: <%= difference[:minutes] %>
+        </small>
+        <p>
+          Importance:
+          <% task.importance.times do %>
+            <small><i class="fa-solid fa-square"></i></small>
+          <% end %>
+        </p>
+        <p>
+          [ a dynamic icon for how long it took to complete the task]
+        </p>
+        <div class="container d-flex flex-row">
+          <p class="me-4">
+            <i class="fa-solid fa-chevron-down"></i>
+            Show subtasks
+          </p>
+          <p>
+            <i class="fa-solid fa-chevron-down"></i>
+            Show task content
+          </p>
+        </div>
+
+        <small>Created <%= task.created_at.to_fs(:long) %></small> |
+        <small>Completed <%= task.updated_at.to_fs(:long) %></small> |
+        <small>
+          Priority:
+          <% task.priority.to_i.times do %>
+            <small><i class="fa-solid fa-fire"></i></small>
+          <% end %>
+        </small>
+        <hr>
+        <hr>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
