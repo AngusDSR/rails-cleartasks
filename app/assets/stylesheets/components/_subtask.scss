@@ -57,7 +57,7 @@ div.div-subtask {
 
 p.new-subtask-text {
   margin: 0;
-  margin-left: 0.8rem;
+  margin-left: 1rem;
   font-size: 0.8rem;
   color: $light-gray;
 }
@@ -94,5 +94,39 @@ i.subtask-checker {
   opacity: 50%;
   &:hover {
     opacity: 90%;
+  }
+}
+
+.subtasks-all-complete-button {
+  width: 67%;
+  height: 2.4rem;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: grey;
+  margin-top: 3px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  * {
+    margin: 0;
+    color: #000;
+    opacity: 70%;
+  }
+
+  &:hover {
+    background: #d6dee1;
+
+    * {
+      font-weight: bold;
+      opacity: 100%;
+
+    }
   }
 }

@@ -8,7 +8,7 @@
       if @subtask.save
         redirect_to request.referer
       else
-        render json: { success: false, errors: @subtask.errors.full_messages }
+        render :index, status: :unprocessable_entity
       end
     end
 
@@ -19,6 +19,7 @@
       if @subtask.save
         redirect_to request.referer, status: :see_other
       else
+        # this needs to be a modal
         render json: { success: false, errors: @subtask.errors.full_messages }
       end
     end
@@ -28,6 +29,7 @@
       if @subtask.destroy
         redirect_to request.referer, status: :see_other
       else
+        # this needs to be a modal
         render json: { success: false, errors: @subtask.errors.full_messages }
       end
     end
