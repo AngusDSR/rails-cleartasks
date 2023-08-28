@@ -1,10 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-
-  static targets = ["iconSubtaskCompletion", "checker", "subtaskCheckboxForm", "subtaskText", "completedAll", "checkAllIcon"]
+  static targets = [
+    "iconSubtaskCompletion",
+    "checker",
+    "subtaskCheckboxForm",
+    "subtaskText",
+    "completedAll",
+    "checkAllIcon"
+  ];
 
   connect() {
+    console.log('hmokok');
   }
 
   submitForm(e) {
@@ -18,83 +25,46 @@ export default class extends Controller {
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content"),
       },
     })
-    .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          // console.log("Subtask saved successfully.");
-        } else {
-          console.error("Failed to save subtask.", data.errors);
-        }
-      })
-      .catch(error => {
-        // Handle network error
-      });
+    .catch(error => {
+      console.error("Network error:", error);
+    });
   }
 
   toggleCompletion(e) {
-    // new icon
-    const icon = e.currentTarget;
-    // default icon
-    const checkbox = this.checkerTargets[icon.id];
+    const initialSubtaskIcon = e.currentTarget;
+    const hiddenSubtaskCheckbox = this.checkerTargets[initialSubtaskIcon.id];
+    const subtaskText = this.subtaskTextTargets[initialSubtaskIcon.id]
 
-    const subtaskText = this.subtaskTextTargets[icon.id]
-
-    if (checkbox.checked) {
-      icon.innerHTML = '<i class="fa-regular fa fa-square subtask-checker"></i>';
+    if (hiddenSubtaskCheckbox.checked) {
+      initialSubtaskIcon.innerHTML = '<i class="fa-regular fa fa-square subtask-checker"></i>';
       subtaskText.classList.remove('strikethrough');
-      checkbox.checked = false
+      hiddenSubtaskCheckbox.checked = false
     } else {
-      icon.innerHTML = '<i class="fa-solid fa-square subtask-checker"></i>';
+      initialSubtaskIcon.innerHTML = '<i class="fa-solid fa-square subtask-checker"></i>';
       subtaskText.classList.add('strikethrough');
-      checkbox.checked = true
+      hiddenSubtaskCheckbox.checked = true
     }
 
     this.submitForm(e);
   }
 
   toggleCompletionAll(e) {
-    // new icon
-    const completedAllCheckbox = e.currentTarget;
-    // new icon is checked
-    const allChecked = completedAllCheckbox.checked;
+    // check if all checkboxes are checked
+    const allCheckboxesChecked = this.checkerTargets.every(checkbox => checkbox.checked);
 
-    // three new icons
-    const checkboxes = this.iconSubtaskCompletionTargets;
+    // add fw-bold to mark the icon as checked
+    e.currentTarget.classList.toggle('fw-bold');
 
-    // default icon
-    const checkAllIcon = this.checkAllIconTarget;
+    // if all are checked then refer all checkboxes, otherwise filter to those unchecked
+    const targetCheckboxes = allCheckboxesChecked
+      ? this.iconSubtaskCompletionTargets
+      : this.iconSubtaskCompletionTargets.filter(
+          checkbox => !this.checkerTargets[checkbox.id].checked
+        );
 
-    // let complete = true;
-
-
-    checkboxes.forEach((checkbox) => {
-      // each checkbox
-      const icon = checkbox;
-      // text
-      const subtaskText = this.subtaskTextTargets[icon.id];
-      // default icon
-      const checkboxInput = this.checkerTargets[checkbox.id];
-
-
-      if (allChecked) {
-        icon.innerHTML = '<i class="fa-solid fa-square subtask-checker"></i>';
-        subtaskText.classList.add('strikethrough');
-      } else {
-        icon.innerHTML = '<i class="fa-regular fa fa-square subtask-checker"></i>';
-        subtaskText.classList.remove('strikethrough');
-      }
-
+    // use array from above to toggle completion where necesarry
+    targetCheckboxes.forEach(checkbox => {
       this.toggleCompletion({ currentTarget: checkbox });
     });
-
-    // Update the checkAllIcon based on `complete` value
-    if (allChecked) {
-      checkAllIcon.innerHTML = '<i class="fa-solid fa-square subtask-checker"></i>';
-    } else {
-      checkAllIcon.innerHTML = '<i class="fa-regular fa fa-square subtask-checker"></i>';
-    }
   }
-
-
-
 }

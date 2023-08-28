@@ -14,7 +14,7 @@
             data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>"
             <%# Stimulus %>
             <%# data-action="click->hide-task-tabs#highlightCurrentTask" %>
-            <%# data-hide-task-tabs-target="taskTabButton"> %>
+            <%# data-hide-task-tabs-target="taskTabButton" %>
             >
             <h3 class="task-name-text">
               <%= task.name %>:
@@ -41,33 +41,41 @@
                       </p>
                       <div class="flex-grow-1"></div>
                       <%= form.check_box :completion, data: { 'mark-subtask-complete-target': 'checker' }, style: 'display: none;', checked: st.completion %>
-                      <div class="subtaskCheckIconDiv" id="<%= index %>"  data-mark-subtask-complete-target="iconSubtaskCompletion"
-                       data-action="click->mark-subtask-complete#toggleCompletion">
-                        <% if st.completion %>
-                          <i class="fa-solid fa-square subtask-checker"></i>
-                        <% else %>
-                          <i class="fa-regular fa fa-square subtask-checker"></i>
-                        <% end %>
-                      </div>
+                        <div class="subtaskCheckIconDiv" id="<%= index %>"
+                          data-mark-subtask-complete-target="iconSubtaskCompletion"
+                          data-action="click->mark-subtask-complete#toggleCompletion"
+                        >
+                          <% if st.completion %>
+                            <i class="fa-solid fa-square subtask-checker"></i>
+                          <% else %>
+                            <i class="fa-regular fa fa-square subtask-checker"></i>
+                          <% end %>
+                        </div>
                     <% end %>
                   </div>
                 <% end %>
-                <div class="div-subtask flex-row d-flex bg-gray" style="width: 100%;padding: 0.6rem;padding-left: 0.4rem;display:
-                  flex;align-items: center;align-items: center;">
-                  <p for="check-all" class="subtask-text" >All completed</p>
-                  <div class="flex-grow-1"></div>
-                  <%# Subtasks complete all button %>
-                  <input id="check-all" type="checkbox" class="" style="display:none;" data-mark-subtask-complete-target="checkAllIcon" >
-                  <div class="subtaskCheckIconDiv" data-mark-subtask-complete-target="completedAll"
-                    data-action="click->mark-subtask-complete#toggleCompletionAll">
-                    <% if task.subtasks.all?(&:completion) %>
-                      <i class="fa-solid fa-check-square subtask-checker"></i>
-                    <% else %>
-                      <i class="fa-regular fa-square-check all-subtasks-checker"></i>
-                    <% end %>
+                <% if task.subtasks.any? { |subtask| !subtask.completion } %>
+                  <div class="div-subtask subtasks-all-complete-button flex-row d-flex bg-gray">
+                    <p class="subtask-text fw-bold text-center">Mark all complete</p>
+                    <div class="flex-grow-1"></div>
+                    <%# Subtasks complete all button %>
+                    <input id="check-all-<%= index %>"
+                      style="display:none;"
+                      type="checkbox"
+                      data-mark-subtask-complete-target="checkAllIcon"
+                    >
+                    <div
+                      class="subtaskCheckIconDiv"
+                    >
+                      <i
+                        class="fa-regular fa-square-check all-subtasks-checker"
+                        data-mark-subtask-complete-target="completedAll"
+                        data-action="click->mark-subtask-complete#toggleCompletionAll"
+                      ></i>
+                      </div>
                   </div>
-                </div>
-               </div>
+                <% end %>
+              </div>
               <hr>
               <%# buttons to edit, view original note and add subtasks %>
               <div class="task-buttons">
