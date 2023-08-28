@@ -22,14 +22,15 @@
   </head>
 
   <body>
-      <%# TEMPORARY - TO PREVENT GRID LAYOUT ON EDIT PAGE %>
-      <%# MAY NOT BE NECESARRY IF WE USE A MODAL %>
-      <% unless request.path.end_with?('edit') %>
-        <div class="container-main">
+    <% if action_name == 'index' %>
+      <div class="container-main">
+        <%= yield %>
+      </div>
+      <% else %>
+        <%= yield %>
       <% end %>
+
       <%= render "shared/alert" %>
-      <%= yield %>
-    </div>
 
     <%# Bootstrap & popperJS %>
     <%# Commented out for now, preventing accordion tabs to close %>

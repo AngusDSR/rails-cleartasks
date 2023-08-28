@@ -1,1 +1,4 @@
-<h4>hey</h4>
+<h1>Completed tasks</h1>
+<%= @tasks.each do |task| %>
+<p><%= task.name %></p>
+<% end %>

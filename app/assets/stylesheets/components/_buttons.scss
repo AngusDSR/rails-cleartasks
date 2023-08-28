@@ -83,6 +83,9 @@
 .task-btn {
   width: 30%;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .subtasks-all-complete-button {
@@ -96,6 +99,7 @@
   background: grey;
   margin-top: 3px;
   border-radius: 8px;
+  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
   p {
