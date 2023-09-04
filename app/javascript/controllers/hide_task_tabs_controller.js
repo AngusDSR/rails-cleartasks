@@ -8,7 +8,9 @@ export default class extends Controller {
 
   highlightCurrentTask(e) {
     let thisTab = this.taskTabButtonTargets[e.currentTarget.id]
-    let taskBody = thisTab.parentElement.nextElementSibling
+    // let taskBody = thisTab.parentElement.nextElementSibling
+    let taskBody = thisTab
+    console.log(this.taskTabButtonTargets);
 
     // hide/show the title
     if (this.tasksTitleTarget.style.display != "none") {
@@ -16,7 +18,7 @@ export default class extends Controller {
     } else {
       this.tasksTitleTarget.style = "display: block;"
     }
-
+\
     // toggle the style of the current tab to be a title
     thisTab.classList.toggle('section-title');
     thisTab.classList.toggle('task-as-title');

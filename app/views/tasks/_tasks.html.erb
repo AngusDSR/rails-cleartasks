@@ -13,8 +13,8 @@
             class="accordion-button task-name" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>"
             <%# Stimulus %>
-            <%# data-action="click->hide-task-tabs#highlightCurrentTask" %>
-            <%# data-hide-task-tabs-target="taskTabButton" %>
+            data-action="click->hide-task-tabs#highlightCurrentTask"
+            data-hide-task-tabs-target="taskTabButton"
             >
             <h3 class="task-name-text">
               <%= task.name %>:
