@@ -13,8 +13,16 @@ class Task < ApplicationRecord
   validate :due_date_must_be_in_future
   validates :name, presence: true, allow_nil: true, length: { in: 5..15 }
 
+  # validate :subtask_limit
+
 
   private
+
+  # def subtask_limit
+  #   if subtask.count > 10
+  #     errors.add(:base, "Task can't have more than 10 subtasks")
+  #   end
+  # end
 
   def set_task_content_original
     # take a copy of the original task content
