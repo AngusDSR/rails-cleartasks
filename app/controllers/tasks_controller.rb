@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    flash[:error] = "Enter at least 10 characters" unless @task.content.present? && @task.save
+    flash[:error] = "Note #{@task.errors[:content].last}" unless @task.save
     redirect_to root_path
   end
 
