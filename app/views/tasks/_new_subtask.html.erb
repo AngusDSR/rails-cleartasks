@@ -1,23 +1,21 @@
 <div class="new-subtask-container" data-controller="subtask" data-target="subtask">
-  <% unless @subtask.nil? %>
-    <%= form_for [task, @subtask], url: task_subtasks_path(task), html: { data: { 'subtask-target': 'form' }, class: "m-0" } do |f| %>
-      <%# this needs setting up properly with JS/Ajax %>
-      <% if task.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(task.errors.count, "error") %> stopped this task from being saved:</h2>
-          <ul>
-            <% task.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="input-group input-group mt-3 mb-2">
-        <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control border-0 subtask-input", data: { 'subtask-target': 'content' } %>
-        <%= button_tag(type: 'submit', class: "btn btn-sm btn-light btn-new-subtask m-0 pe-1 fs-1") do %>
-          <i class="fa-solid fa-plus"></i>
-        <% end %>
+  <%= form_for [task, @subtask], url: task_subtasks_path(task), html: { data: { 'subtask-target': 'form' }, class: "m-0" } do |f| %>
+    <%# this needs setting up properly with JS/Ajax %>
+    <% if @subtask.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@subtask.errors.count, "error") %> stopped this task from being saved:</h2>
+        <ul>
+          <% @subtask.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
+    <div class="input-group input-group mt-3 mb-2">
+      <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control border-0 subtask-input", data: { 'subtask-target': 'content' } %>
+      <%= button_tag(type: 'submit', class: "btn btn-sm btn-light btn-new-subtask m-0 pe-1 fs-1") do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
   <% end %>
 </div>
