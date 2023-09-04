@@ -8,7 +8,6 @@
       if @subtask.save
         redirect_to request.referer
       else
-        # come back to this later: ideally, should reload the partial only, not reset the page
         flash[:error] = "Subtask #{@subtask.errors[:content].last}" unless @subtask.save
         redirect_to :root
       end
