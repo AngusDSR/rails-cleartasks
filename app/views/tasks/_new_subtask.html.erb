@@ -1,5 +1,5 @@
 <div class="new-subtask-container" data-controller="subtask" data-target="subtask">
-  <% unless @subtask.nil? %>
+  <%# <% unless @subtask.nil? %>
     <%= form_for [task, @subtask], url: task_subtasks_path(task), html: { data: { 'subtask-target': 'form' }, class: "m-0" } do |f| %>
       <%# this needs setting up properly with JS/Ajax %>
       <% if task.errors.any? %>
@@ -16,8 +16,9 @@
         <%= f.text_field :content, placeholder: "Enter sub task", class: "form-control border-0 subtask-input", data: { 'subtask-target': 'content' } %>
         <%= button_tag(type: 'submit', class: "btn btn-sm btn-light btn-new-subtask m-0 pe-1 fs-1") do %>
           <i class="fa-solid fa-plus"></i>
+
         <% end %>
       </div>
     <% end %>
-  <% end %>
+  <%# <% end %>
 </div>

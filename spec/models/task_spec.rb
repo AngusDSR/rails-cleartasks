@@ -41,18 +41,41 @@ RSpec.describe Task, type: :model do
 
       expect(task.valid?).to be(false)
     end
+
+    it "must have content and the content must have 10-150 characters" do
+      task = Task.new(name: "New", content: "", importance: 3, due_date: Date.tomorrow)
+      task = Task.new(name: "New", content: "Too short", importance: 3, due_date: Date.tomorrow)
+
+      expect(task.valid?).to be(false)
+    end
+
+    # it "doesn't need due date to be created" do
+    #   task = Task.new(name: "Sample name", content: "Sample content", importance: 3, due_date: )
+    #   expect(task.valid?).to be(true)
+    # end
+
+
     # to test:
     # Validations
-    # task name not too long
-    # must have content
-    # task content is only text
-    # task content 10-150 characters
     # due date is not mandatory
     # due date must be in future
     # due date can't be too far into future
     # importance only 1-5 (creating or updating)
 
     # process/quality
+    describe 'process and quality' do
+      task = Task.new(name: "Sample name", content: "Sample content", importance: 3, due_date: Date.tomorrow)
+      11.times do
+        task.subtasks.build(content: "Sample subtask")
+      end
+
+      if task.subtasks.all { |subtask| subtask.completion } {
+        task.completion = true
+      }
+
+      expect(task.completion?).to be(true)
+
+    end
     # complete all subtasks makes task complete - callback
     # limit number of subtasks
     # task reason length

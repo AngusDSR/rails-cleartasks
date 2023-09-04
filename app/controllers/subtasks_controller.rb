@@ -8,7 +8,10 @@
       if @subtask.save
         redirect_to request.referer
       else
-        render :index, status: :unprocessable_entity
+        # render :index, status: :unprocessable_entity
+      #  render partial: 'tasks/new_subtask', status: unprocessable_entity, locals: {task : @task}
+       flash[:error] = "Enter at least 10 characters" unless @subtask.content.present? && @subtask.save
+       redirect_to root_path
       end
     end
 
