@@ -35,6 +35,12 @@ RSpec.describe Task, type: :model do
       expect(task.valid?).to be(false)
     end
 
+    it "name has 5-15 characters long" do
+      task = Task.new(name: "New", content: "Sample content", importance: 3, due_date: Date.tomorrow)
+      task = Task.new(name: "New sample name which is too long", content: "Sample content", importance: 3, due_date: Date.tomorrow)
+
+      expect(task.valid?).to be(false)
+    end
     # to test:
     # Validations
     # task name not too long
