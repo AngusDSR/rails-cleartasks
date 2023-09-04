@@ -8,8 +8,8 @@
       if @subtask.save
         redirect_to request.referer
       else
-       flash[:error] = "Enter at least 10 characters" unless @subtask.content.present? && @subtask.save
-       redirect_to root_path
+        flash[:error] = "Subtask #{@subtask.errors[:content].last}" unless @subtask.save
+        redirect_to :root
       end
     end
 

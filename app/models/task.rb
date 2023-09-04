@@ -11,9 +11,7 @@ class Task < ApplicationRecord
   validates :content, presence: true, length: { in: 10..1500 }
   validates :importance, inclusion: { in: 1..5 }
   validate :due_date_must_be_in_future
-  validates :name, presence: true, allow_nil: true, length: { in: 5..15 }
-
-  # validate :subtask_limit
+  # validates :name, presence: true, allow_nil: true, length: { in: 5..15 }
 
 
   private
